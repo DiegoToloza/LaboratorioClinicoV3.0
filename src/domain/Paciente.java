@@ -71,6 +71,7 @@ public class Paciente extends Persona {
         sb.append("Paciente{idPaciente = ").append(idPaciente);
         sb.append(", telefono = ").append(telefono);
         sb.append(", correoElectronico = ").append(correoElectronico);
+        sb.append(super.toString());
         sb.append('}');
         return sb.toString();
     }

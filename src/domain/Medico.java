@@ -71,6 +71,7 @@ public class Medico extends Persona {
         sb.append(", especializacion = ").append(especializacion);
         sb.append(", telefono = ").append(telefono);
         sb.append(", correoElectronico = ").append(correoElectronico);
+        sb.append(super.toString());
         sb.append('}');
         return sb.toString();
     }

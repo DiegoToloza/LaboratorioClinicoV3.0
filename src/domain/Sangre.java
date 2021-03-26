@@ -57,6 +57,20 @@ public class Sangre implements IMuestraGenerica{
         sb.append(", neutrofilos = ").append(neutrofilos);
         sb.append(", plaquetas = ").append(plaquetas);
         sb.append('}');
-        return sb.toString();    }
+        return sb.toString();   
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("Sangre{hemogoblina=").append(hemogoblina);
+        sb.append(", reticulocitos=").append(reticulocitos);
+        sb.append(", neutrofilos=").append(neutrofilos);
+        sb.append(", plaquetas=").append(plaquetas);
+        sb.append('}');
+        return sb.toString();
+    }
+    
+    
     
 }

@@ -59,5 +59,19 @@ public class Semen implements IMuestraGenerica {
         sb.append('}');
         return sb.toString();   
     }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("Semen{volumen=").append(volumen);
+        sb.append(", concentracion=").append(concentracion);
+        sb.append(", globulosBlancos=").append(globulosBlancos);
+        sb.append(", vitalidad=").append(vitalidad);
+        sb.append('}');
+        return sb.toString();
+    }
+
+    
+    
     
 }

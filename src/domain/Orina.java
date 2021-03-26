@@ -60,5 +60,18 @@ public class Orina implements IMuestraGenerica{
         return sb.toString();
     }
 
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("Orina{glucosa=").append(glucosa);
+        sb.append(", densidad=").append(densidad);
+        sb.append(", pH=").append(pH);
+        sb.append(", sodio=").append(sodio);
+        sb.append('}');
+        return sb.toString();
+    }
+    
+    
+
     
 }
