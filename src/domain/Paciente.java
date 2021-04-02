@@ -2,6 +2,8 @@ package domain;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.io.*;
+import test.*;
 
 public class Paciente extends Persona {
     private int idPaciente;
@@ -64,6 +66,7 @@ public class Paciente extends Persona {
     public List<IMuestraGenerica> getMuestras(){
         return this.muestras;
     }
+    
     
     @Override
     public String toString() {

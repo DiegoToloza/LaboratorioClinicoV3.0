@@ -40,6 +40,10 @@ public class Sangre implements IMuestraGenerica{
     public void setNeutrofilos(int neutrofilos) {
         this.neutrofilos = neutrofilos;
     }
+    
+    public void setNeutrofilos(double neutrofilos) {
+        this.neutrofilos = (int)neutrofilos;
+    }
 
     public int getPlaquetas() {
         return this.plaquetas;
@@ -47,6 +51,10 @@ public class Sangre implements IMuestraGenerica{
 
     public void setPlaquetas(int plaquetas) {
         this.plaquetas = plaquetas;
+    }
+    
+    public void setPlaquetas(double plaquetas) {
+        this.plaquetas = (int)plaquetas;
     }
 
     @Override
