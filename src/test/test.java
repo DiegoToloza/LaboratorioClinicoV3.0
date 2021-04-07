@@ -25,6 +25,7 @@ public class test {
         });
     }
     
+    
     public static Paciente agregarPacienteManual() throws IOException{
         int ip , ed;
         String te , ce , nom , gen , na ;
