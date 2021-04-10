@@ -9,22 +9,22 @@ public class Paciente extends Persona {
     private int idPaciente;
     private String telefono;
     private String correoElectronico;
-    private List<IMuestraGenerica> muestras;
+    private List<IMuestraGenerica> muestrasPaciente;
     
     public Paciente(){
-        this.muestras = new ArrayList<>();
+        muestrasPaciente = new ArrayList<>();
     }
     
     public Paciente(int idPaciente){
         this.idPaciente = idPaciente;
-        this.muestras = new ArrayList<>();
+        muestrasPaciente = new ArrayList<>();
     }
 
     public Paciente(String telefono, String correoElectronico, String nombre, int edad, String genero, String nacionalidad) {
         super(nombre, edad, genero, nacionalidad);
         this.telefono = telefono;
         this.correoElectronico = correoElectronico;
-        this.muestras = new ArrayList<>();
+        muestrasPaciente = new ArrayList<>();
     }
 
     public Paciente(int idPaciente, String telefono, String correoElectronico, String nombre, int edad, String genero, String nacionalidad) {
@@ -32,7 +32,7 @@ public class Paciente extends Persona {
         this.idPaciente = idPaciente;
         this.telefono = telefono;
         this.correoElectronico = correoElectronico;
-        this.muestras = new ArrayList<>();
+        muestrasPaciente = new ArrayList<>();
     }
 
     public int getIdPaciente() {
@@ -59,13 +59,14 @@ public class Paciente extends Persona {
         this.correoElectronico = correoElectronico;
     }
     
-    public void setMuestras(List<IMuestraGenerica> muestras){
-        this.muestras = muestras;
+    public void agregarMuestra(IMuestraGenerica muestra){
+        muestrasPaciente.add(muestra);
+    }
+
+    public List<IMuestraGenerica> getMuestrasPaciente() {
+        return muestrasPaciente;
     }
     
-    public List<IMuestraGenerica> getMuestras(){
-        return this.muestras;
-    }
     
     
     @Override
