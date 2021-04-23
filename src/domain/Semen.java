@@ -5,16 +5,18 @@ public class Semen implements IMuestraGenerica {
     private double concentracion;
     private double globulosBlancos;
     private int vitalidad;
+    private int idPaciente;
     
     public Semen(){
         
     }
 
-    public Semen(double volumen, double concentracion, double globulosBlancos, int vitalidad) {
+    public Semen(double volumen, double concentracion, double globulosBlancos, int vitalidad, int idPaciente) {
         this.volumen = volumen;
         this.concentracion = concentracion;
         this.globulosBlancos = globulosBlancos;
         this.vitalidad = vitalidad;
+        this.idPaciente = idPaciente;
     }
 
     public double getVolumen() {
@@ -48,7 +50,15 @@ public class Semen implements IMuestraGenerica {
     public void setVitalidad(int vitalidad) {
         this.vitalidad = vitalidad;
     }
+    
+    public int getIdPaciente() {
+        return this.idPaciente;
+    }
 
+    public void setIdPaciente(int idPaciente) {
+        this.idPaciente = idPaciente;
+    }
+    
     @Override
     public String escribir() {
         StringBuilder sb = new StringBuilder();
@@ -56,22 +66,8 @@ public class Semen implements IMuestraGenerica {
         sb.append(", concentracion = ").append(concentracion);
         sb.append(", globulosBlancos = ").append(globulosBlancos);
         sb.append(", vitalidad = ").append(vitalidad);
+        sb.append(", idPaciente = ").append(idPaciente);
         sb.append('}');
         return sb.toString();   
     }
-
-    @Override
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("Semen{volumen=").append(volumen);
-        sb.append(", concentracion=").append(concentracion);
-        sb.append(", globulosBlancos=").append(globulosBlancos);
-        sb.append(", vitalidad=").append(vitalidad);
-        sb.append('}');
-        return sb.toString();
-    }
-
-    
-    
-    
 }

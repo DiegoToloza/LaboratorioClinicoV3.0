@@ -60,8 +60,8 @@ public class test {
         System.out.print("Ingrese nacionalidad paciente:");
         na = lector.readLine();
 
-        Paciente pacienteGenerico = new Paciente(ip, te, ce, nom, ed, gen, na);
-        mapaPacientes.put(pacienteGenerico.getIdPaciente(),pacienteGenerico);
+//        Paciente pacienteGenerico = new Paciente(ip, te, ce, nom, ed, gen, na);
+//        mapaPacientes.put(pacienteGenerico.getIdPaciente(),pacienteGenerico);
     }
 
     public static void agregarMedicoManual() throws IOException {
@@ -89,56 +89,55 @@ public class test {
         mapaMedicos.put(medicoGenerico.getIdMedico(), medicoGenerico);
     }
 
-    public static IMuestraGenerica agregarSangreManual() throws IOException {
-        double hem, ret;
-        int neu, pla;
-        BufferedReader lector = new BufferedReader(new InputStreamReader(System.in));
-        System.out.print("Ingrese hemoglobina:");
-        hem = Double.parseDouble(lector.readLine());
-        System.out.print("Ingrese reticulocitos:");
-        ret = Double.parseDouble(lector.readLine());
-        System.out.print("Ingrese neutrofilos:");
-        neu = Integer.parseInt(lector.readLine());
-        System.out.print("Ingrese plaquetas:");
-        pla = Integer.parseInt(lector.readLine());
+//    public static IMuestraGenerica agregarSangreManual() throws IOException {
+//        double hem, ret;
+//        int neu, pla;
+//        BufferedReader lector = new BufferedReader(new InputStreamReader(System.in));
+//        System.out.print("Ingrese hemoglobina:");
+//        hem = Double.parseDouble(lector.readLine());
+//        System.out.print("Ingrese reticulocitos:");
+//        ret = Double.parseDouble(lector.readLine());
+//        System.out.print("Ingrese neutrofilos:");
+//        neu = Integer.parseInt(lector.readLine());
+//        System.out.print("Ingrese plaquetas:");
+//        pla = Integer.parseInt(lector.readLine());
+//        IMuestraGenerica sangreGenerica = new Sangre(hem, ret, neu, pla);
+//        return sangreGenerica;
+//    }
 
-        IMuestraGenerica sangreGenerica = new Sangre(hem, ret, neu, pla);
-        return sangreGenerica;
-    }
+//    public static IMuestraGenerica agregarSemenManual() throws IOException {
+//        double vol, con, glo;
+//        int vit;
+//        BufferedReader lector = new BufferedReader(new InputStreamReader(System.in));
+//        System.out.print("Ingrese volumen:");
+//        vol = Double.parseDouble(lector.readLine());
+//        System.out.print("Ingrese concentracion:");
+//        con = Double.parseDouble(lector.readLine());
+//        System.out.print("Ingrese globulos blancos:");
+//        glo = Double.parseDouble(lector.readLine());
+//        System.out.print("Ingrese vitalidad:");
+//        vit = Integer.parseInt(lector.readLine());
+//
+//        IMuestraGenerica semenGenerica = new Semen(vol, con, glo, vit);
+//        return semenGenerica;
+//    }
 
-    public static IMuestraGenerica agregarSemenManual() throws IOException {
-        double vol, con, glo;
-        int vit;
-        BufferedReader lector = new BufferedReader(new InputStreamReader(System.in));
-        System.out.print("Ingrese volumen:");
-        vol = Double.parseDouble(lector.readLine());
-        System.out.print("Ingrese concentracion:");
-        con = Double.parseDouble(lector.readLine());
-        System.out.print("Ingrese globulos blancos:");
-        glo = Double.parseDouble(lector.readLine());
-        System.out.print("Ingrese vitalidad:");
-        vit = Integer.parseInt(lector.readLine());
-
-        IMuestraGenerica semenGenerica = new Semen(vol, con, glo, vit);
-        return semenGenerica;
-    }
-
-    public static IMuestraGenerica agregarOrinaManual() throws IOException {
-        double glu, den;
-        int ph, sod;
-        BufferedReader lector = new BufferedReader(new InputStreamReader(System.in));
-        System.out.print("Ingrese glucosa:");
-        glu = Double.parseDouble(lector.readLine());
-        System.out.print("Ingrese densidad:");
-        den = Double.parseDouble(lector.readLine());
-        System.out.print("Ingrese pH:");
-        ph = Integer.parseInt(lector.readLine());
-        System.out.print("Ingrese sodio:");
-        sod = Integer.parseInt(lector.readLine());
-
-        IMuestraGenerica orinaGenerica = new Orina(glu, den, ph, sod);
-        return orinaGenerica;
-    }
+//    public static IMuestraGenerica agregarOrinaManual() throws IOException {
+//        double glu, den;
+//        int ph, sod;
+//        BufferedReader lector = new BufferedReader(new InputStreamReader(System.in));
+//        System.out.print("Ingrese glucosa:");
+//        glu = Double.parseDouble(lector.readLine());
+//        System.out.print("Ingrese densidad:");
+//        den = Double.parseDouble(lector.readLine());
+//        System.out.print("Ingrese pH:");
+//        ph = Integer.parseInt(lector.readLine());
+//        System.out.print("Ingrese sodio:");
+//        sod = Integer.parseInt(lector.readLine());
+//
+//        IMuestraGenerica orinaGenerica = new Orina(glu, den, ph, sod);
+//        return orinaGenerica;
+//    }
 
     public static int Menu(List<String> Lista) throws IOException {
 
