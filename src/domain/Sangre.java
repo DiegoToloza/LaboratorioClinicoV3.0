@@ -1,20 +1,23 @@
 package domain;
 
-public class Sangre implements IMuestraGenerica{
+public class Sangre implements IMuestraGenerica {
+
     private double hemogoblina;
     private double reticulocitos;
     private int neutrofilos;
     private int plaquetas;
+    private int idPaciente;
 
-    public Sangre(){
-        
+    public Sangre() {
+
     }
 
-    public Sangre(double hemogoblina, double reticulocitos, int neutrofilos, int plaquetas) {
+    public Sangre(double hemogoblina, double reticulocitos, int neutrofilos, int plaquetas, int idPaciente) {
         this.hemogoblina = hemogoblina;
         this.reticulocitos = reticulocitos;
         this.neutrofilos = neutrofilos;
         this.plaquetas = plaquetas;
+        this.idPaciente = idPaciente;
     }
 
     public double getHemogoblina() {
@@ -40,9 +43,9 @@ public class Sangre implements IMuestraGenerica{
     public void setNeutrofilos(int neutrofilos) {
         this.neutrofilos = neutrofilos;
     }
-    
+
     public void setNeutrofilos(double neutrofilos) {
-        this.neutrofilos = (int)neutrofilos;
+        this.neutrofilos = (int) neutrofilos;
     }
 
     public int getPlaquetas() {
@@ -52,9 +55,17 @@ public class Sangre implements IMuestraGenerica{
     public void setPlaquetas(int plaquetas) {
         this.plaquetas = plaquetas;
     }
-    
+
     public void setPlaquetas(double plaquetas) {
-        this.plaquetas = (int)plaquetas;
+        this.plaquetas = (int) plaquetas;
+    }
+
+    public int getIdPaciente() {
+        return this.idPaciente;
+    }
+
+    public void setIdPaciente(int idPaciente) {
+        this.idPaciente = idPaciente;
     }
 
     @Override
@@ -64,21 +75,8 @@ public class Sangre implements IMuestraGenerica{
         sb.append(", reticulocitos = ").append(reticulocitos);
         sb.append(", neutrofilos = ").append(neutrofilos);
         sb.append(", plaquetas = ").append(plaquetas);
-        sb.append('}');
-        return sb.toString();   
-    }
-
-    @Override
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("Sangre{hemogoblina=").append(hemogoblina);
-        sb.append(", reticulocitos=").append(reticulocitos);
-        sb.append(", neutrofilos=").append(neutrofilos);
-        sb.append(", plaquetas=").append(plaquetas);
+        sb.append(", idPaciente = ").append(idPaciente);
         sb.append('}');
         return sb.toString();
     }
-    
-    
-    
 }

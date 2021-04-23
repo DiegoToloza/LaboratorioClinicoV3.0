@@ -1,20 +1,23 @@
 package domain;
 
-public class Orina implements IMuestraGenerica{
+public class Orina implements IMuestraGenerica {
+
     private double glucosa;
     private double densidad;
     private int pH;
     private int sodio;
+    private int idPaciente;
 
-    public Orina(){
-        
+    public Orina() {
+
     }
-    
-    public Orina(double glucosa, double densidad, int pH, int sodio) {
+
+    public Orina(double glucosa, double densidad, int pH, int sodio, int idPaciente) {
         this.glucosa = glucosa;
         this.densidad = densidad;
         this.pH = pH;
         this.sodio = sodio;
+        this.idPaciente = idPaciente;
     }
 
     public double getGlucosa() {
@@ -49,6 +52,14 @@ public class Orina implements IMuestraGenerica{
         this.sodio = sodio;
     }
 
+    public int getIdPaciente() {
+        return this.idPaciente;
+    }
+
+    public void setIdPaciente(int idPaciente) {
+        this.idPaciente = idPaciente;
+    }
+
     @Override
     public String escribir() {
         StringBuilder sb = new StringBuilder();
@@ -56,22 +67,9 @@ public class Orina implements IMuestraGenerica{
         sb.append(", densidad = ").append(densidad);
         sb.append(", pH = ").append(pH);
         sb.append(", sodio = ").append(sodio);
+        sb.append(", idPaciente = ").append(idPaciente);
         sb.append('}');
         return sb.toString();
     }
 
-    @Override
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("Orina{glucosa=").append(glucosa);
-        sb.append(", densidad=").append(densidad);
-        sb.append(", pH=").append(pH);
-        sb.append(", sodio=").append(sodio);
-        sb.append('}');
-        return sb.toString();
-    }
-    
-    
-
-    
 }
