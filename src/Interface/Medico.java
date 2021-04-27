@@ -2,6 +2,8 @@ package Interface;
 
 import java.sql.SQLException;
 import java.util.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import jdbc.*;
 
 public class Medico extends javax.swing.JPanel {
@@ -10,8 +12,8 @@ public class Medico extends javax.swing.JPanel {
         initComponents();
         cargarMedico();
     }
-    
-    private void cargarMedico() throws SQLException{
+
+    private void cargarMedico() throws SQLException {
         List<domain.Medico> listaMedicos = new JdbcMedico().select();
         String matriz[][] = new String[listaMedicos.size()][4];
         for (int i = 0; i < listaMedicos.size(); i++) {
@@ -21,9 +23,9 @@ public class Medico extends javax.swing.JPanel {
             matriz[i][3] = listaMedicos.get(i).getTelefono();
         }
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
-        matriz, new String[]{
-            "Nombre", "Especialización", "Email", "Teléfono"
-        }));
+                matriz, new String[]{
+                    "Nombre", "Especialización", "Email", "Teléfono"
+                }));
     }
 
     @SuppressWarnings("unchecked")
@@ -72,6 +74,11 @@ public class Medico extends javax.swing.JPanel {
         jButton2.setText("Eliminar");
 
         jButton3.setText("Agregar");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -121,6 +128,17 @@ public class Medico extends javax.swing.JPanel {
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        try {
+            DialogPaciente panel = new DialogPaciente(new javax.swing.JFrame(), true, 2);
+            panel.setLocationRelativeTo(this);
+            panel.setVisible(true);
+            cargarMedico();
+        } catch (SQLException ex) {
+            Logger.getLogger(Paciente.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jButton3ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

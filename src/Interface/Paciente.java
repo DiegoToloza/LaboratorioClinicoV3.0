@@ -2,6 +2,9 @@ package Interface;
 
 import java.sql.SQLException;
 import java.util.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JPanel;
 import jdbc.*;
 
 public class Paciente extends javax.swing.JPanel {
@@ -9,6 +12,13 @@ public class Paciente extends javax.swing.JPanel {
     public Paciente() throws SQLException {
         initComponents();
         cargarPaciente();
+    }
+    
+    private void cargarPanel(JPanel nuevoPanel){
+        jPanel3.removeAll();
+        jPanel3.add(nuevoPanel);
+        jPanel3.repaint();
+        jPanel3.revalidate();
     }
     
     private void cargarPaciente() throws SQLException{
@@ -73,6 +83,11 @@ public class Paciente extends javax.swing.JPanel {
         jButton4.setText("Modificar");
 
         jButton5.setText("Agregar");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -120,6 +135,17 @@ public class Paciente extends javax.swing.JPanel {
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        try {
+            DialogPaciente panel = new DialogPaciente(new javax.swing.JFrame() , true , 1);
+            panel.setLocationRelativeTo(this);
+            panel.setVisible(true);
+            cargarPaciente();
+        } catch (SQLException ex) {
+            Logger.getLogger(Paciente.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jButton5ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -3,8 +3,15 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/ASUS/Desktop/ProyectoLab%20%20Clinico/LaboratorioClinico/src/test/test.java</file>
-            <file>file:/C:/Users/ASUS/Desktop/ProyectoLab%20%20Clinico/LaboratorioClinico/src/domain/Paciente.java</file>
+            <file>file:/C:/Users/nebas/Documents/GitHub/LaboratorioClinicoV3.0/src/jdbc/Conexion.java</file>
+            <file>file:/C:/Users/nebas/Documents/GitHub/LaboratorioClinicoV3.0/src/domain/Medico.java</file>
+            <file>file:/C:/Users/nebas/Documents/GitHub/LaboratorioClinicoV3.0/src/test/test.java</file>
+            <file>file:/C:/Users/nebas/Documents/GitHub/LaboratorioClinicoV3.0/src/jdbc/JdbcMedico.java</file>
+            <file>file:/C:/Users/nebas/Documents/GitHub/LaboratorioClinicoV3.0/src/domain/Paciente.java</file>
+            <file>file:/C:/Users/nebas/Documents/GitHub/LaboratorioClinicoV3.0/src/Interface/Paciente.java</file>
+            <file>file:/C:/Users/nebas/Documents/GitHub/LaboratorioClinicoV3.0/src/test/test2.java</file>
+            <file>file:/C:/Users/nebas/Documents/GitHub/LaboratorioClinicoV3.0/src/Interface/AgregarPaciente.java</file>
+            <file>file:/C:/Users/nebas/Documents/GitHub/LaboratorioClinicoV3.0/src/Interface/Menu.java</file>
         </group>
     </open-files>
 </project-private>
