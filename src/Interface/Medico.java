@@ -2,8 +2,6 @@ package Interface;
 
 import java.sql.SQLException;
 import java.util.*;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import jdbc.*;
 
 public class Medico extends javax.swing.JPanel {
@@ -136,7 +134,7 @@ public class Medico extends javax.swing.JPanel {
             panel.setVisible(true);
             cargarMedico();
         } catch (SQLException ex) {
-            Logger.getLogger(Paciente.class.getName()).log(Level.SEVERE, null, ex);
+            ex.printStackTrace(System.out);
         }
     }//GEN-LAST:event_jButton3ActionPerformed
 

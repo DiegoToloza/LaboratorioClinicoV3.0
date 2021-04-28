@@ -1,8 +1,6 @@
 package Interface;
 
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import jdbc.JdbcPaciente;
 
 public class AgregarPaciente extends javax.swing.JPanel {
