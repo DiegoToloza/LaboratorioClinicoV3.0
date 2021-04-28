@@ -1,13 +1,13 @@
-package Interface;
+package Interface.PPaciente;
 
 import java.sql.SQLException;
 import jdbc.JdbcPaciente;
 
-public class AgregarPaciente extends javax.swing.JPanel {
+public class ModificarPaciente extends javax.swing.JPanel {
     
     DialogPaciente manejo = null; 
 
-    public AgregarPaciente(DialogPaciente p) {
+    public ModificarPaciente(DialogPaciente p) {
         manejo = p;
         initComponents();
         manejo.setSize(325, 550);
@@ -106,12 +106,11 @@ public class AgregarPaciente extends javax.swing.JPanel {
                     .addComponent(jButton2)
                     .addComponent(Nombre, javax.swing.GroupLayout.DEFAULT_SIZE, 133, Short.MAX_VALUE)
                     .addComponent(Edad)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(IdMedico, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 132, Short.MAX_VALUE)
-                        .addComponent(CorreoElectronico, javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(Telefono, javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(Genero, javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(Nacionalidad, javax.swing.GroupLayout.Alignment.TRAILING)))
+                    .addComponent(IdMedico, javax.swing.GroupLayout.DEFAULT_SIZE, 132, Short.MAX_VALUE)
+                    .addComponent(CorreoElectronico)
+                    .addComponent(Telefono)
+                    .addComponent(Genero)
+                    .addComponent(Nacionalidad))
                 .addGap(47, 47, 47))
         );
         jPanel1Layout.setVerticalGroup(

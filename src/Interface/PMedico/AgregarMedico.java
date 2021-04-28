@@ -1,17 +1,14 @@
-package Interface;
+package Interface.PMedico;
 
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import jdbc.JdbcMedico;
-import jdbc.JdbcPaciente;
 
 public class AgregarMedico extends javax.swing.JPanel {
     
-    DialogPaciente manejo = null; 
+    DialogMedico manejo = null; 
 
-    public AgregarMedico(DialogPaciente p) {
-        manejo = p;
+    public AgregarMedico(DialogMedico m) {
+        manejo = m;
         initComponents();
         manejo.setSize(335, 550);
     }

@@ -1,9 +1,7 @@
-package Interface;
+package Interface.PPaciente;
 
 import java.sql.SQLException;
 import java.util.*;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JPanel;
 import jdbc.*;
 
@@ -31,7 +29,7 @@ public class Paciente extends javax.swing.JPanel {
             matriz[i][3] = listaPaciente.get(i).getCorreoElectronico();
             matriz[i][4] = listaPaciente.get(i).getTelefono();
         }
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tablaPacientes.setModel(new javax.swing.table.DefaultTableModel(
         matriz, new String[]{
             "Nombre", "Edad","Género", "Email", "Teléfono"
         }));
@@ -43,15 +41,15 @@ public class Paciente extends javax.swing.JPanel {
 
         jPanel3 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tablaPacientes = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         BotonEliminarPaciente = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
+        botonModificarPaciente = new javax.swing.JButton();
+        botonAgregarPaciente = new javax.swing.JButton();
 
         jPanel3.setBackground(new java.awt.Color(204, 204, 204));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tablaPacientes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
                 {null, null, null, null, null},
@@ -70,13 +68,13 @@ public class Paciente extends javax.swing.JPanel {
                 return types [columnIndex];
             }
         });
-        jTable1.setRowHeight(23);
-        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+        tablaPacientes.setRowHeight(23);
+        tablaPacientes.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jTable1MouseClicked(evt);
+                tablaPacientesMouseClicked(evt);
             }
         });
-        jScrollPane2.setViewportView(jTable1);
+        jScrollPane2.setViewportView(tablaPacientes);
 
         jLabel1.setFont(new java.awt.Font("Dialog", 0, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
@@ -90,12 +88,12 @@ public class Paciente extends javax.swing.JPanel {
             }
         });
 
-        jButton4.setText("Modificar");
+        botonModificarPaciente.setText("Modificar");
 
-        jButton5.setText("Agregar");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
+        botonAgregarPaciente.setText("Agregar");
+        botonAgregarPaciente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
+                botonAgregarPacienteActionPerformed(evt);
             }
         });
 
@@ -107,9 +105,9 @@ public class Paciente extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jButton5)
+                        .addComponent(botonAgregarPaciente)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton4)
+                        .addComponent(botonModificarPaciente)
                         .addGap(18, 18, 18)
                         .addComponent(BotonEliminarPaciente))
                     .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -125,8 +123,8 @@ public class Paciente extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(BotonEliminarPaciente, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(botonModificarPaciente, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(botonAgregarPaciente, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 454, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(36, Short.MAX_VALUE))
@@ -146,7 +144,7 @@ public class Paciente extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+    private void botonAgregarPacienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAgregarPacienteActionPerformed
         try {
             DialogPaciente panel = new DialogPaciente(new javax.swing.JFrame() , true , 1, null);
             panel.setLocationRelativeTo(this);
@@ -155,11 +153,11 @@ public class Paciente extends javax.swing.JPanel {
         } catch (SQLException ex) {
             ex.printStackTrace(System.out);
         }
-    }//GEN-LAST:event_jButton5ActionPerformed
+    }//GEN-LAST:event_botonAgregarPacienteActionPerformed
 
     private void BotonEliminarPacienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonEliminarPacienteActionPerformed
         try {
-            DialogPaciente panel = new DialogPaciente(new javax.swing.JFrame(), true, 4, null);
+            DialogPaciente panel = new DialogPaciente(new javax.swing.JFrame(), true, 2, null);
             panel.setLocationRelativeTo(this);
             panel.setVisible(true);
             cargarPaciente();
@@ -168,28 +166,28 @@ public class Paciente extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_BotonEliminarPacienteActionPerformed
 
-    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+    private void tablaPacientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaPacientesMouseClicked
         try {
-            int tabla = jTable1.getSelectedRow();
+            int tabla = tablaPacientes.getSelectedRow();
             List<domain.Paciente> listaPacientes = new JdbcPaciente().select();
             domain.Paciente paciente = listaPacientes.get(tabla);
-            DialogPaciente panel = new DialogPaciente(new javax.swing.JFrame(), true, 5, paciente);
+            DialogPaciente panel = new DialogPaciente(new javax.swing.JFrame(), true, 3, paciente);
             panel.setLocationRelativeTo(this);
             panel.setVisible(true);
             cargarPaciente();
         } catch (SQLException ex) {
             ex.printStackTrace(System.out);
         }
-    }//GEN-LAST:event_jTable1MouseClicked
+    }//GEN-LAST:event_tablaPacientesMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BotonEliminarPaciente;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
+    private javax.swing.JButton botonAgregarPaciente;
+    private javax.swing.JButton botonModificarPaciente;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable tablaPacientes;
     // End of variables declaration//GEN-END:variables
 }

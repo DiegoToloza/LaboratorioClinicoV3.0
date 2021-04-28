@@ -1,13 +1,13 @@
-package Interface;
+package Interface.PPaciente;
 
 import java.sql.SQLException;
 import jdbc.JdbcPaciente;
 
-public class ModificarPaciente extends javax.swing.JPanel {
+public class AgregarPaciente extends javax.swing.JPanel {
     
     DialogPaciente manejo = null; 
 
-    public ModificarPaciente(DialogPaciente p) {
+    public AgregarPaciente(DialogPaciente p) {
         manejo = p;
         initComponents();
         manejo.setSize(325, 550);

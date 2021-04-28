@@ -1,5 +1,6 @@
-package Interface;
+package Interface.PPaciente;
 
+import Interface.PMedico.AgregarMedico;
 import java.sql.SQLException;
 import javax.swing.JPanel;
 
@@ -15,20 +16,12 @@ public class DialogPaciente extends javax.swing.JDialog {
                 cargarPanel(panel);
             }
             case 2 -> {
-                AgregarMedico panel = new AgregarMedico(this);
-                cargarPanel(panel);
-            }
-            case 3 -> {
-                EliminarMedico panel = new EliminarMedico(this);
-                cargarPanel(panel);
-            }
-            case 4 -> {
                 EliminarPaciente panel = new EliminarPaciente(this);
                 cargarPanel(panel);
             }
-            case 5 -> {
-                
-                
+            case 3 -> {
+                SeleccionPacientes panel = new SeleccionPacientes(this, paciente);
+                cargarPanel(panel);
             }
         }
     }
@@ -40,7 +33,6 @@ public class DialogPaciente extends javax.swing.JDialog {
         jPanel1 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(100, 100));
 
         jPanel1.setLayout(new java.awt.CardLayout());
 

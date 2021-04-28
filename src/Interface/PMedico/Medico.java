@@ -1,5 +1,6 @@
-package Interface;
+package Interface.PMedico;
 
+import Interface.PPaciente.DialogPaciente;
 import java.sql.SQLException;
 import java.util.*;
 import jdbc.*;
@@ -20,7 +21,7 @@ public class Medico extends javax.swing.JPanel {
             matriz[i][2] = listaMedicos.get(i).getCorreoElectronico();
             matriz[i][3] = listaMedicos.get(i).getTelefono();
         }
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tablaMedicos.setModel(new javax.swing.table.DefaultTableModel(
                 matriz, new String[]{
                     "Nombre", "Especialización", "Email", "Teléfono"
                 }));
@@ -32,7 +33,7 @@ public class Medico extends javax.swing.JPanel {
 
         jPanel3 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tablaMedicos = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         BotonEliminarMedico = new javax.swing.JButton();
@@ -40,7 +41,7 @@ public class Medico extends javax.swing.JPanel {
 
         jPanel3.setBackground(new java.awt.Color(204, 204, 204));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tablaMedicos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -59,8 +60,13 @@ public class Medico extends javax.swing.JPanel {
                 return types [columnIndex];
             }
         });
-        jTable1.setRowHeight(23);
-        jScrollPane2.setViewportView(jTable1);
+        tablaMedicos.setRowHeight(23);
+        tablaMedicos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tablaMedicosMouseClicked(evt);
+            }
+        });
+        jScrollPane2.setViewportView(tablaMedicos);
 
         jLabel1.setFont(new java.awt.Font("Dialog", 0, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
@@ -134,7 +140,7 @@ public class Medico extends javax.swing.JPanel {
 
     private void BotonAgregarMedicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonAgregarMedicoActionPerformed
         try {
-            DialogPaciente panel = new DialogPaciente(new javax.swing.JFrame(), true, 2, null);
+            DialogPaciente panel = new DialogPaciente(new javax.swing.JFrame(), true, 1, null);
             panel.setLocationRelativeTo(this);
             panel.setVisible(true);
             cargarMedico();
@@ -145,7 +151,7 @@ public class Medico extends javax.swing.JPanel {
 
     private void BotonEliminarMedicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonEliminarMedicoActionPerformed
         try {
-            DialogPaciente panel = new DialogPaciente(new javax.swing.JFrame(), true, 3, null);
+            DialogPaciente panel = new DialogPaciente(new javax.swing.JFrame(), true, 2, null);
             panel.setLocationRelativeTo(this);
             panel.setVisible(true);
             cargarMedico();
@@ -153,6 +159,20 @@ public class Medico extends javax.swing.JPanel {
             ex.printStackTrace(System.out);
         }
     }//GEN-LAST:event_BotonEliminarMedicoActionPerformed
+
+    private void tablaMedicosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaMedicosMouseClicked
+        try {
+            int tabla = tablaMedicos.getSelectedRow();
+            List<domain.Medico> listaMedicos = new JdbcMedico().select();
+            domain.Medico medico = listaMedicos.get(tabla);
+            DialogMedico panel = new DialogMedico(new javax.swing.JFrame(), true, 3, medico);
+            panel.setLocationRelativeTo(this);
+            panel.setVisible(true);
+            cargarMedico();
+        } catch (SQLException ex) {
+            ex.printStackTrace(System.out);
+        }
+    }//GEN-LAST:event_tablaMedicosMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -162,6 +182,6 @@ public class Medico extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable tablaMedicos;
     // End of variables declaration//GEN-END:variables
 }
