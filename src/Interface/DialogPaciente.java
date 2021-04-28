@@ -5,7 +5,7 @@ import javax.swing.JPanel;
 
 public class DialogPaciente extends javax.swing.JDialog {
 
-    public DialogPaciente(java.awt.Frame parent, boolean modal, int opcion) throws SQLException {
+    public DialogPaciente(java.awt.Frame parent, boolean modal, int opcion, domain.Paciente paciente) throws SQLException {
         super(parent, modal);
         setUndecorated(true);
         initComponents();
@@ -25,6 +25,10 @@ public class DialogPaciente extends javax.swing.JDialog {
             case 4 -> {
                 EliminarPaciente panel = new EliminarPaciente(this);
                 cargarPanel(panel);
+            }
+            case 5 -> {
+                
+                
             }
         }
     }

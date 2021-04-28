@@ -71,6 +71,11 @@ public class Paciente extends javax.swing.JPanel {
             }
         });
         jTable1.setRowHeight(23);
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable1MouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(jTable1);
 
         jLabel1.setFont(new java.awt.Font("Dialog", 0, 36)); // NOI18N
@@ -143,18 +148,18 @@ public class Paciente extends javax.swing.JPanel {
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         try {
-            DialogPaciente panel = new DialogPaciente(new javax.swing.JFrame() , true , 1);
+            DialogPaciente panel = new DialogPaciente(new javax.swing.JFrame() , true , 1, null);
             panel.setLocationRelativeTo(this);
             panel.setVisible(true);
             cargarPaciente();
         } catch (SQLException ex) {
-            Logger.getLogger(Paciente.class.getName()).log(Level.SEVERE, null, ex);
+            ex.printStackTrace(System.out);
         }
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void BotonEliminarPacienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonEliminarPacienteActionPerformed
         try {
-            DialogPaciente panel = new DialogPaciente(new javax.swing.JFrame(), true, 4);
+            DialogPaciente panel = new DialogPaciente(new javax.swing.JFrame(), true, 4, null);
             panel.setLocationRelativeTo(this);
             panel.setVisible(true);
             cargarPaciente();
@@ -162,6 +167,20 @@ public class Paciente extends javax.swing.JPanel {
             ex.printStackTrace(System.out);
         }
     }//GEN-LAST:event_BotonEliminarPacienteActionPerformed
+
+    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+        try {
+            int tabla = jTable1.getSelectedRow();
+            List<domain.Paciente> listaPacientes = new JdbcPaciente().select();
+            domain.Paciente paciente = listaPacientes.get(tabla);
+            DialogPaciente panel = new DialogPaciente(new javax.swing.JFrame(), true, 5, paciente);
+            panel.setLocationRelativeTo(this);
+            panel.setVisible(true);
+            cargarPaciente();
+        } catch (SQLException ex) {
+            ex.printStackTrace(System.out);
+        }
+    }//GEN-LAST:event_jTable1MouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
