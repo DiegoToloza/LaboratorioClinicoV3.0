@@ -35,8 +35,8 @@ public class Medico extends javax.swing.JPanel {
         jTable1 = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        BotonEliminarMedico = new javax.swing.JButton();
+        BotonAgregarMedico = new javax.swing.JButton();
 
         jPanel3.setBackground(new java.awt.Color(204, 204, 204));
 
@@ -69,12 +69,17 @@ public class Medico extends javax.swing.JPanel {
 
         jButton1.setText("Modificar");
 
-        jButton2.setText("Eliminar");
-
-        jButton3.setText("Agregar");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        BotonEliminarMedico.setText("Eliminar");
+        BotonEliminarMedico.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                BotonEliminarMedicoActionPerformed(evt);
+            }
+        });
+
+        BotonAgregarMedico.setText("Agregar");
+        BotonAgregarMedico.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotonAgregarMedicoActionPerformed(evt);
             }
         });
 
@@ -86,11 +91,11 @@ public class Medico extends javax.swing.JPanel {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton3)
+                        .addComponent(BotonAgregarMedico)
                         .addGap(18, 18, 18)
                         .addComponent(jButton1)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton2))
+                        .addComponent(BotonEliminarMedico))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -106,8 +111,8 @@ public class Medico extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(BotonEliminarMedico, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(BotonAgregarMedico, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 454, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(36, Short.MAX_VALUE))
@@ -127,7 +132,7 @@ public class Medico extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void BotonAgregarMedicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonAgregarMedicoActionPerformed
         try {
             DialogPaciente panel = new DialogPaciente(new javax.swing.JFrame(), true, 2);
             panel.setLocationRelativeTo(this);
@@ -136,13 +141,24 @@ public class Medico extends javax.swing.JPanel {
         } catch (SQLException ex) {
             ex.printStackTrace(System.out);
         }
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_BotonAgregarMedicoActionPerformed
+
+    private void BotonEliminarMedicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonEliminarMedicoActionPerformed
+        try {
+            DialogPaciente panel = new DialogPaciente(new javax.swing.JFrame(), true, 3);
+            panel.setLocationRelativeTo(this);
+            panel.setVisible(true);
+            cargarMedico();
+        } catch (SQLException ex) {
+            ex.printStackTrace(System.out);
+        }
+    }//GEN-LAST:event_BotonEliminarMedicoActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BotonAgregarMedico;
+    private javax.swing.JButton BotonEliminarMedico;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane2;

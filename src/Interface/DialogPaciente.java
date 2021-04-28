@@ -18,6 +18,14 @@ public class DialogPaciente extends javax.swing.JDialog {
                 AgregarMedico panel = new AgregarMedico(this);
                 cargarPanel(panel);
             }
+            case 3 -> {
+                EliminarMedico panel = new EliminarMedico(this);
+                cargarPanel(panel);
+            }
+            case 4 -> {
+                EliminarPaciente panel = new EliminarPaciente(this);
+                cargarPanel(panel);
+            }
         }
     }
 
