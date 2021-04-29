@@ -54,7 +54,7 @@ public class ModificarPaciente extends javax.swing.JPanel {
             }
         });
 
-        botonActualizarPaciente.setText("Agregar");
+        botonActualizarPaciente.setText("Actualizar");
         botonActualizarPaciente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonActualizarPacienteActionPerformed(evt);

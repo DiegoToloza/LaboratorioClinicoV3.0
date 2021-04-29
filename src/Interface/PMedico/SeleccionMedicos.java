@@ -225,6 +225,10 @@ public class SeleccionMedicos extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_modificarPacienteActionPerformed
 
+.
+
+    public SeleccionMedicos() {
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Edad;
