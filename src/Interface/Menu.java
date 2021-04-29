@@ -8,9 +8,6 @@ import javax.swing.JPanel;
 
 public class Menu extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Menu
-     */
     public Menu() {
         setUndecorated(true);
         initComponents();

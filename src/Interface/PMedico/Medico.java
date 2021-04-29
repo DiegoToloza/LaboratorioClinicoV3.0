@@ -140,7 +140,7 @@ public class Medico extends javax.swing.JPanel {
 
     private void BotonAgregarMedicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonAgregarMedicoActionPerformed
         try {
-            DialogPaciente panel = new DialogPaciente(new javax.swing.JFrame(), true, 1, null);
+            DialogMedico panel = new DialogMedico(new javax.swing.JFrame(), true, 1, null);
             panel.setLocationRelativeTo(this);
             panel.setVisible(true);
             cargarMedico();
@@ -151,7 +151,7 @@ public class Medico extends javax.swing.JPanel {
 
     private void BotonEliminarMedicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonEliminarMedicoActionPerformed
         try {
-            DialogPaciente panel = new DialogPaciente(new javax.swing.JFrame(), true, 2, null);
+            DialogMedico panel = new DialogMedico(new javax.swing.JFrame(), true, 2, null);
             panel.setLocationRelativeTo(this);
             panel.setVisible(true);
             cargarMedico();
