@@ -1,5 +1,8 @@
 package Interface.PPaciente;
 
+import java.sql.SQLException;
+import jdbc.JdbcPaciente;
+
 public class SeleccionPacientes extends javax.swing.JPanel {
 
     DialogPaciente manejo = null;
@@ -107,6 +110,11 @@ public class SeleccionPacientes extends javax.swing.JPanel {
         generoPaciente.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
 
         modificarPaciente.setText("Modificar");
+        modificarPaciente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                modificarPacienteActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -139,7 +147,6 @@ public class SeleccionPacientes extends javax.swing.JPanel {
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel5)
                                     .addComponent(jLabel4))))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -180,8 +187,7 @@ public class SeleccionPacientes extends javax.swing.JPanel {
                         .addGap(22, 22, 22)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(nombrePaciente, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(5, 5, 5)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -221,6 +227,20 @@ public class SeleccionPacientes extends javax.swing.JPanel {
     private void botonAtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAtrasActionPerformed
         manejo.setVisible(false);
     }//GEN-LAST:event_botonAtrasActionPerformed
+
+    private void modificarPacienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarPacienteActionPerformed
+        try {
+            DialogPaciente panel = new DialogPaciente(new javax.swing.JFrame() , true , 4, paciente);
+            panel.setLocationRelativeTo(this);
+            panel.setVisible(true);
+            JdbcPaciente jp = new JdbcPaciente();
+            paciente = jp.select(paciente.getIdPaciente());
+            SeleccionPacientes sm = new SeleccionPacientes(manejo,paciente);
+            manejo.cargarPanel(sm);
+        } catch (SQLException ex) {
+            ex.printStackTrace(System.out);
+        }
+    }//GEN-LAST:event_modificarPacienteActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

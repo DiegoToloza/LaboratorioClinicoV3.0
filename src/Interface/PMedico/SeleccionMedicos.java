@@ -1,17 +1,19 @@
 package Interface.PMedico;
 
+import java.sql.SQLException;
+import jdbc.JdbcMedico;
 
 public class SeleccionMedicos extends javax.swing.JPanel {
 
     DialogMedico manejo = null;
     domain.Medico medico = null;
-    
+
     public SeleccionMedicos(DialogMedico m, domain.Medico medico) {
         manejo = m;
         initComponents();
         manejo.setSize(805, 600);
         this.medico = medico;
-        
+
         nombreMedico.setText(this.medico.getNombre());
         edadMedico.setText("" + this.medico.getEdad());
         nacionalidadMedico.setText(this.medico.getNacionalidad());
@@ -97,6 +99,11 @@ public class SeleccionMedicos extends javax.swing.JPanel {
         nacionalidadMedico.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
 
         modificarPaciente.setText("Modificar");
+        modificarPaciente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                modificarPacienteActionPerformed(evt);
+            }
+        });
 
         Especializacion.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         Especializacion.setForeground(new java.awt.Color(0, 0, 0));
@@ -203,6 +210,20 @@ public class SeleccionMedicos extends javax.swing.JPanel {
     private void botonAtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAtrasActionPerformed
         manejo.setVisible(false);
     }//GEN-LAST:event_botonAtrasActionPerformed
+
+    private void modificarPacienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarPacienteActionPerformed
+        try {
+            DialogMedico panel = new DialogMedico(new javax.swing.JFrame(), true, 4, medico);
+            panel.setLocationRelativeTo(this);
+            panel.setVisible(true);
+            JdbcMedico jm = new JdbcMedico();
+            medico = jm.select(medico.getIdMedico());
+            SeleccionMedicos sm = new SeleccionMedicos(manejo,medico);
+            manejo.cargarPanel(sm);
+        } catch (SQLException ex) {
+            ex.printStackTrace(System.out);
+        }
+    }//GEN-LAST:event_modificarPacienteActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

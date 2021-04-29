@@ -12,6 +12,7 @@ public class JdbcPaciente {
     private static final String SQL_UPDATE = "UPDATE laboratorio.paciente SET nombre = ?, edad = ?, genero = ?, nacionalidad = ?, telefono = ?, email = ?, id_medico = ? WHERE id_paciente = ?";
     private static final String SQL_DELETE = "DELETE FROM laboratorio.paciente WHERE id_paciente = ?";
     private static final String SQL_SELECT = "SELECT * FROM laboratorio.paciente";
+    private static final String SQL_SELECT_ONE = "SELECT * FROM laboratorio.paciente WHERE id_paciente = ?";
     private static final String SQL_MAX_ID = "SELECT MAX(id_paciente) AS id_paciente FROM laboratorio.paciente";
 
     public JdbcPaciente(){
@@ -125,6 +126,42 @@ public class JdbcPaciente {
 
         return listaPacientes;
     }
+    
+    public Paciente select(int idPaciente) throws SQLException {
+        Connection conn = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+
+        Paciente paciente = null;
+
+        try {
+            conn = this.userConn != null ? this.userConn : Conexion.getConnection();
+            ps = conn.prepareStatement(SQL_SELECT_ONE);
+            ps.setInt(1, idPaciente);
+            rs = ps.executeQuery();
+
+            while (rs.next()) {
+                int newIdPaciente = rs.getInt("id_paciente");
+                String nombre = rs.getString("nombre");
+                int edad = rs.getInt("edad");
+                String genero = rs.getString("genero");
+                String nacionalidad = rs.getString("nacionalidad");
+                String telefono = rs.getString("telefono");
+                String email = rs.getString("email");
+                int idMedico = rs.getInt("id_medico");
+
+                paciente = new Paciente(newIdPaciente, telefono, email, nombre, edad, genero, nacionalidad, idMedico);
+            }
+        } finally {
+            Conexion.close(rs);
+            Conexion.close(ps);
+            if (this.userConn == null) {
+                Conexion.close(conn);
+            }
+        }
+        return paciente;
+    }
+    
 
     public Integer ultimoId() throws SQLException {
         Connection conn = null;

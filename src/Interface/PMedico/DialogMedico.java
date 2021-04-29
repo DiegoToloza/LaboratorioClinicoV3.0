@@ -23,6 +23,10 @@ public class DialogMedico extends javax.swing.JDialog {
                 SeleccionMedicos panel = new SeleccionMedicos(this, medico);
                 cargarPanel(panel);
             }
+            case 4 -> {
+                ModificarMedico panel = new ModificarMedico(this, medico);
+                cargarPanel(panel);
+            }
         }
     }
 
@@ -50,7 +54,7 @@ public class DialogMedico extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void cargarPanel(JPanel nuevoPanel) {
+    public void cargarPanel(JPanel nuevoPanel) {
         jPanel1.removeAll();
         jPanel1.add(nuevoPanel);
         jPanel1.repaint();

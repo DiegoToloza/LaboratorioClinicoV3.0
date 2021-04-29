@@ -12,6 +12,7 @@ public class JdbcMedico {
     private static final String SQL_UPDATE = "UPDATE laboratorio.medico SET nombre = ?, edad = ?, genero = ?, nacionalidad = ?, especializacion = ?, telefono = ?, email = ? WHERE id_medico = ?";
     private static final String SQL_DELETE = "DELETE FROM laboratorio.medico WHERE id_medico = ?";
     private static final String SQL_SELECT = "SELECT * FROM laboratorio.medico";
+    private static final String SQL_SELECT_ONE = "SELECT * FROM laboratorio.medico WHERE id_medico = ?";
     private static final String SQL_MAX_ID = "SELECT MAX(id_medico) AS id_medico FROM laboratorio.medico";
 
     public JdbcMedico() {
@@ -125,6 +126,44 @@ public class JdbcMedico {
         return listaMedicos;
     }
 
+    public Medico select(int idMedico) throws SQLException {
+        Connection conn = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+
+        Medico medico = null;
+
+        try {
+            conn = this.userConn != null ? this.userConn : Conexion.getConnection();
+            ps = conn.prepareStatement(SQL_SELECT_ONE);
+            ps.setInt(1, idMedico);
+            rs = ps.executeQuery();
+
+            while (rs.next()) {
+                int newIdMedico = rs.getInt("id_medico");
+                String nombre = rs.getString("nombre");
+                int edad = rs.getInt("edad");
+                String genero = rs.getString("genero");
+                String nacionalidad = rs.getString("nacionalidad");
+                String especializacion = rs.getString("especializacion");
+                String telefono = rs.getString("telefono");
+                String email = rs.getString("email");
+
+                medico = new Medico(newIdMedico, especializacion, telefono, email, nombre, edad, genero, nacionalidad);
+            }
+        } finally {
+            Conexion.close(rs);
+            Conexion.close(ps);
+            if (this.userConn == null) {
+                Conexion.close(conn);
+            }
+        }
+        return medico;
+    }
+    
+    
+    
+    
     public Integer ultimoId() throws SQLException {
         Connection conn = null;
         PreparedStatement ps = null;

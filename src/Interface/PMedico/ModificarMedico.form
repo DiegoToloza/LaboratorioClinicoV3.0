@@ -54,7 +54,7 @@
                       <Group type="102" attributes="0">
                           <Component id="botonAtras" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
-                          <Component id="botonAgregarMedico" min="-2" max="-2" attributes="0"/>
+                          <Component id="botonActualizarMedico" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" attributes="0">
@@ -129,7 +129,7 @@
                   <EmptySpace min="-2" pref="60" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="botonAtras" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
-                      <Component id="botonAgregarMedico" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                      <Component id="botonActualizarMedico" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace pref="31" max="32767" attributes="0"/>
               </Group>
@@ -149,7 +149,7 @@
               <Color blue="0" green="0" red="0" type="rgb"/>
             </Property>
             <Property name="horizontalAlignment" type="int" value="0"/>
-            <Property name="text" type="java.lang.String" value="Agregar Medico"/>
+            <Property name="text" type="java.lang.String" value="Modificar Medico"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JFormattedTextField" name="Nombre">
@@ -180,12 +180,12 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonAtrasActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="botonAgregarMedico">
+        <Component class="javax.swing.JButton" name="botonActualizarMedico">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Agregar"/>
+            <Property name="text" type="java.lang.String" value="Actualizar"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonAgregarMedicoActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonActualizarMedicoActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel2">
