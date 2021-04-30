@@ -225,7 +225,6 @@ public class SeleccionMedicos extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_modificarPacienteActionPerformed
 
-.
 
     public SeleccionMedicos() {
     }
