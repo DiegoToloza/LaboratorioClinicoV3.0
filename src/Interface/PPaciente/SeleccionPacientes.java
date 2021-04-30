@@ -223,10 +223,6 @@ public class SeleccionPacientes extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void botonSemenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonSemenActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_botonSemenActionPerformed
-
     private void botonAtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAtrasActionPerformed
         manejo.setVisible(false);
     }//GEN-LAST:event_botonAtrasActionPerformed
@@ -255,6 +251,11 @@ public class SeleccionPacientes extends javax.swing.JPanel {
         Sangre sangrePanel = new Sangre();
         cargarPanel(sangrePanel);
     }//GEN-LAST:event_botonSangreActionPerformed
+
+    private void botonSemenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonSemenActionPerformed
+        Semen semenPanel = new Semen();
+        cargarPanel(semenPanel);
+    }//GEN-LAST:event_botonSemenActionPerformed
     
     private void cargarPanel(JPanel nuevoPanel){
         Muestras.removeAll();
