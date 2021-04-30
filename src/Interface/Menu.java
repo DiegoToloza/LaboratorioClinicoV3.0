@@ -40,7 +40,7 @@ public class Menu extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(51, 153, 255));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interface/adn feliz.png"))); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interface/PNG/adn feliz.png"))); // NOI18N
 
         BotonMedico.setText("Medicos");
         BotonMedico.addActionListener(new java.awt.event.ActionListener() {

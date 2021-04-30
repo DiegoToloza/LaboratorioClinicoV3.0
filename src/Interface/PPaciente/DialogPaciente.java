@@ -4,11 +4,14 @@ import java.sql.SQLException;
 import javax.swing.JPanel;
 
 public class DialogPaciente extends javax.swing.JDialog {
+    
+    domain.Paciente paciente = null;
 
     public DialogPaciente(java.awt.Frame parent, boolean modal, int opcion, domain.Paciente paciente) throws SQLException {
         super(parent, modal);
         setUndecorated(true);
         initComponents();
+        this.paciente = paciente;
         switch(opcion){
             case 1 -> {
                 AgregarPaciente panel = new AgregarPaciente(this);
@@ -24,6 +27,18 @@ public class DialogPaciente extends javax.swing.JDialog {
             }
             case 4 -> {
                 ModificarPaciente panel = new ModificarPaciente(this, paciente);
+                cargarPanel(panel);
+            }
+            case 5 -> {
+                AgregarMuestraOrina panel = new AgregarMuestraOrina(this);
+                cargarPanel(panel);
+            }
+            case 6 -> {
+                AgregarMuestraSangre panel = new AgregarMuestraSangre(this);
+                cargarPanel(panel);
+            }
+            case 7 -> {
+                AgregarMuestraSemen panel = new AgregarMuestraSemen(this);
                 cargarPanel(panel);
             }
         }

@@ -8,20 +8,20 @@ public class SeleccionPacientes extends javax.swing.JPanel {
 
     DialogPaciente manejo = null;
     domain.Paciente paciente = null;
-    
+
     public SeleccionPacientes(DialogPaciente p, domain.Paciente paciente) {
         manejo = p;
         initComponents();
         manejo.setSize(805, 600);
         this.paciente = paciente;
-        
+
         nombrePaciente.setText(this.paciente.getNombre());
         edadPaciente.setText("" + this.paciente.getEdad());
         generoPaciente.setText(this.paciente.getGenero());
         emailPaciente.setText(this.paciente.getCorreoElectronico());
         telefonoPaciente.setText(this.paciente.getTelefono());
     }
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -230,12 +230,12 @@ public class SeleccionPacientes extends javax.swing.JPanel {
 
     private void modificarPacienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarPacienteActionPerformed
         try {
-            DialogPaciente panel = new DialogPaciente(new javax.swing.JFrame() , true , 4, paciente);
+            DialogPaciente panel = new DialogPaciente(new javax.swing.JFrame(), true, 4, paciente);
             panel.setLocationRelativeTo(this);
             panel.setVisible(true);
             JdbcPaciente jp = new JdbcPaciente();
             paciente = jp.select(paciente.getIdPaciente());
-            SeleccionPacientes sm = new SeleccionPacientes(manejo,paciente);
+            SeleccionPacientes sm = new SeleccionPacientes(manejo, paciente);
             manejo.cargarPanel(sm);
         } catch (SQLException ex) {
             ex.printStackTrace(System.out);
@@ -243,29 +243,41 @@ public class SeleccionPacientes extends javax.swing.JPanel {
     }//GEN-LAST:event_modificarPacienteActionPerformed
 
     private void botonOrinaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonOrinaActionPerformed
-        Orina orinaPanel = new Orina();
-        cargarPanel(orinaPanel);
-        
+        try {
+            Orina orinaPanel = new Orina(this);
+            cargarPanel(orinaPanel);
+        } catch (SQLException ex) {
+            ex.printStackTrace(System.out);
+        }
+
     }//GEN-LAST:event_botonOrinaActionPerformed
 
     private void botonSangreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonSangreActionPerformed
-        Sangre sangrePanel = new Sangre();
-        cargarPanel(sangrePanel);
+        try {
+            Sangre sangrePanel = new Sangre(this);
+            cargarPanel(sangrePanel);
+        } catch (SQLException ex) {
+            ex.printStackTrace(System.out);
+        }
     }//GEN-LAST:event_botonSangreActionPerformed
 
     private void botonSemenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonSemenActionPerformed
-        Semen semenPanel = new Semen();
-        cargarPanel(semenPanel);
+        try {
+            Semen semenPanel = new Semen(this);
+            cargarPanel(semenPanel);
+        } catch (SQLException ex) {
+            ex.printStackTrace(System.out);
+        }
     }//GEN-LAST:event_botonSemenActionPerformed
-    
-    private void cargarPanel(JPanel nuevoPanel){
+
+    public void cargarPanel(JPanel nuevoPanel) {
         Muestras.removeAll();
         Muestras.add(nuevoPanel);
         Muestras.repaint();
         Muestras.revalidate();
     }
- 
-    
+
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Muestras;
     private javax.swing.JButton botonAtras;

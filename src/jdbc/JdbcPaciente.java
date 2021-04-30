@@ -128,8 +128,6 @@ public class JdbcPaciente {
         return listaPacientes;
     }
     
-        
-            
 
     public Map<Integer,Paciente> selectMedico(int idDeMedico) throws SQLException {
         Connection conn = null;
