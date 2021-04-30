@@ -1,14 +1,18 @@
 package Interface.PMedico;
 
+import domain.Paciente;
 import java.sql.SQLException;
+import java.util.List;
+import java.util.Map;
 import jdbc.JdbcMedico;
+import jdbc.JdbcPaciente;
 
 public class SeleccionMedicos extends javax.swing.JPanel {
 
     DialogMedico manejo = null;
     domain.Medico medico = null;
 
-    public SeleccionMedicos(DialogMedico m, domain.Medico medico) {
+    public SeleccionMedicos(DialogMedico m, domain.Medico medico) throws SQLException {
         manejo = m;
         initComponents();
         manejo.setSize(805, 600);
@@ -20,6 +24,8 @@ public class SeleccionMedicos extends javax.swing.JPanel {
         emailMedico.setText(this.medico.getCorreoElectronico());
         telefonoMedico.setText(this.medico.getTelefono());
         especializacionMedico.setText(this.medico.getEspecializacion());
+        
+        cargarPaciente();
     }
 
     @SuppressWarnings("unchecked")
@@ -33,7 +39,6 @@ public class SeleccionMedicos extends javax.swing.JPanel {
         Email = new javax.swing.JLabel();
         Telefono = new javax.swing.JLabel();
         Nacionalidad = new javax.swing.JLabel();
-        jPanel2 = new javax.swing.JPanel();
         botonAtras = new javax.swing.JButton();
         nombreMedico = new javax.swing.JLabel();
         edadMedico = new javax.swing.JLabel();
@@ -43,6 +48,9 @@ public class SeleccionMedicos extends javax.swing.JPanel {
         modificarPaciente = new javax.swing.JButton();
         Especializacion = new javax.swing.JLabel();
         especializacionMedico = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tablaPacientes = new javax.swing.JTable();
+        jLabel1 = new javax.swing.JLabel();
 
         setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(51, 51, 51)));
 
@@ -69,17 +77,6 @@ public class SeleccionMedicos extends javax.swing.JPanel {
         Nacionalidad.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         Nacionalidad.setForeground(new java.awt.Color(0, 0, 0));
         Nacionalidad.setText("Nacionalidad:");
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 411, Short.MAX_VALUE)
-        );
 
         botonAtras.setText("Atrás");
         botonAtras.addActionListener(new java.awt.event.ActionListener() {
@@ -111,14 +108,47 @@ public class SeleccionMedicos extends javax.swing.JPanel {
 
         especializacionMedico.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
 
+        tablaPacientes.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
+            },
+            new String [] {
+                "Nombre", "Edad", "Genero", "Email", "Telefono"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        tablaPacientes.setRowHeight(23);
+        tablaPacientes.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tablaPacientesMouseClicked(evt);
+            }
+        });
+        jScrollPane2.setViewportView(tablaPacientes);
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("Pacientes Asignados");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jScrollPane2)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(Imagen, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
@@ -190,9 +220,11 @@ public class SeleccionMedicos extends javax.swing.JPanel {
                                 .addComponent(telefonoMedico, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(especializacionMedico, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addGap(49, 49, 49)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(7, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 52, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 367, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -225,6 +257,26 @@ public class SeleccionMedicos extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_modificarPacienteActionPerformed
 
+    private void tablaPacientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaPacientesMouseClicked
+    }//GEN-LAST:event_tablaPacientesMouseClicked
+
+    private void cargarPaciente() throws SQLException{
+        int cont = 0;
+        Map<Integer,domain.Paciente> mapaPaciente = new JdbcPaciente().selectMedico(medico.getIdMedico());
+        String matriz[][] = new String[mapaPaciente.values().size()][5];
+        for (domain.Paciente paciente : mapaPaciente.values()) {
+            matriz[cont][0] = paciente.getNombre();
+            matriz[cont][1] = "" + (paciente.getEdad());
+            matriz[cont][2] = paciente.getGenero();
+            matriz[cont][3] = paciente.getCorreoElectronico();
+            matriz[cont][4] = paciente.getTelefono();
+            cont++;
+        }
+        tablaPacientes.setModel(new javax.swing.table.DefaultTableModel(
+        matriz, new String[]{
+            "Nombre", "Edad","Género", "Email", "Teléfono"
+        }));
+    }
 
     public SeleccionMedicos() {
     }
@@ -241,11 +293,13 @@ public class SeleccionMedicos extends javax.swing.JPanel {
     private javax.swing.JLabel edadMedico;
     private javax.swing.JLabel emailMedico;
     private javax.swing.JLabel especializacionMedico;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JButton modificarPaciente;
     private javax.swing.JLabel nacionalidadMedico;
     private javax.swing.JLabel nombreMedico;
+    private javax.swing.JTable tablaPacientes;
     private javax.swing.JLabel telefonoMedico;
     // End of variables declaration//GEN-END:variables
 }
