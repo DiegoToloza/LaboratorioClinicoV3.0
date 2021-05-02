@@ -42,9 +42,9 @@
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="botonAgregarMuestra" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="botonModificarMuestra1" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="botonModificarMuestra" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="botonEliminarMuestra" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace pref="215" max="32767" attributes="0"/>
@@ -92,8 +92,8 @@
                       <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="botonAgregarMuestra" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="botonEliminarMuestra" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="botonModificarMuestra" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="botonModificarMuestra1" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <Group type="102" attributes="0">
@@ -185,15 +185,21 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonAgregarMuestraActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="botonModificarMuestra">
+    <Component class="javax.swing.JButton" name="botonEliminarMuestra">
       <Properties>
         <Property name="text" type="java.lang.String" value="Eliminar Muestra"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonEliminarMuestraActionPerformed"/>
+      </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="botonModificarMuestra1">
+    <Component class="javax.swing.JButton" name="botonModificarMuestra">
       <Properties>
         <Property name="text" type="java.lang.String" value="Modificar Muestra"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonModificarMuestraActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

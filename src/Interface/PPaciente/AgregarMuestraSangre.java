@@ -11,7 +11,7 @@ public class AgregarMuestraSangre extends javax.swing.JPanel {
     public AgregarMuestraSangre(DialogPaciente p) {
         manejo = p;
         initComponents();
-        manejo.setSize(339, 395);
+        manejo.setSize(346, 395);
         manejo.setLocationRelativeTo(null);
     }
 

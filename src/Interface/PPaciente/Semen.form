@@ -41,11 +41,11 @@
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
-                      <Component id="botonModificarMuestra3" min="-2" max="-2" attributes="0"/>
+                      <Component id="botonAgregarMuestra" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="botonModificarMuestra1" min="-2" max="-2" attributes="0"/>
+                      <Component id="botonModificarMuestra" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="botonModificarMuestra2" min="-2" max="-2" attributes="0"/>
+                      <Component id="botonEliminarMuestra" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace pref="124" max="32767" attributes="0"/>
@@ -92,9 +92,9 @@
                       </Group>
                       <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="botonModificarMuestra1" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="botonModificarMuestra2" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="botonModificarMuestra3" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="botonModificarMuestra" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="botonEliminarMuestra" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="botonAgregarMuestra" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <Group type="102" attributes="0">
@@ -178,22 +178,28 @@
         <Property name="text" type="java.lang.String" value="aki ba lo ecsamene:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="botonModificarMuestra1">
+    <Component class="javax.swing.JButton" name="botonModificarMuestra">
       <Properties>
         <Property name="text" type="java.lang.String" value="Modificar Muestra"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonModificarMuestraActionPerformed"/>
+      </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="botonModificarMuestra2">
+    <Component class="javax.swing.JButton" name="botonEliminarMuestra">
       <Properties>
         <Property name="text" type="java.lang.String" value="Eliminar Muestra"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonEliminarMuestraActionPerformed"/>
+      </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="botonModificarMuestra3">
+    <Component class="javax.swing.JButton" name="botonAgregarMuestra">
       <Properties>
         <Property name="text" type="java.lang.String" value="Agregar Muestra"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonModificarMuestra3ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonAgregarMuestraActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>

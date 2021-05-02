@@ -1,0 +1,45 @@
+    Reporte de datos.
+
+
+     Médico:
+
+     Medico{idMedico = 4, especializacion = Otorrinolaringologo, telefono = 412341234, correoElectronico = pene123Persona{nombre = manolo, edad = 321, genero = hembra, nacionalidad = peruano}}
+
+     Paciente(s) del Médico:
+
+        Paciente{idPaciente = 5, telefono = 534543534, correoElectronico = asdasPersona{nombre = dafa, edad = 32, genero = Indefinido, nacionalidad = Peruano}}
+
+            Muestra sangre:
+            Sangre{hemogoblina = 31212.0, reticulocitos = 3265.0, neutrofilos = 3562, plaquetas = 3625, idPaciente = 5}
+
+
+        Paciente{idPaciente = 6, telefono = 4234234, correoElectronico = reymasterfollador@hotmail.comPersona{nombre = Alex, edad = 22, genero = Bicho, nacionalidad = Peruano}}
+
+            Muestra orina:
+            Orina{glucosa = 234.0, densidad = 423.0, pH = 4, sodio = 2423, idPaciente = 6}
+
+            Muestra sangre:
+            Sangre{hemogoblina = 423.0, reticulocitos = 423.0, neutrofilos = 423, plaquetas = 234, idPaciente = 6}
+
+            Muestra semen:
+            Semen{volumen = 234.0, concentracion = 423.0, globulosBlancos = 2342.0, vitalidad = 423, idPaciente = 6}
+
+
+        Paciente{idPaciente = 7, telefono = 123423, correoElectronico = rwerwePersona{nombre = Diego, edad = 312, genero = fds, nacionalidad = peruiano}}
+
+        Paciente{idPaciente = 8, telefono = fsd, correoElectronico = vsdsPersona{nombre = Rafa, edad = 23, genero = fsdf, nacionalidad = fsd}}
+
+            Muestra orina:
+            Orina{glucosa = 312.0, densidad = 423.0, pH = 432, sodio = 34, idPaciente = 8}
+
+     Médico:
+
+     Medico{idMedico = 5, especializacion = fsdfsd, telefono = fsd, correoElectronico = fsdfsdPersona{nombre = Manola, edad = 423, genero = fsdf, nacionalidad = sfsd}}
+
+     Paciente(s) del Médico:
+
+        Paciente{idPaciente = 9, telefono = fsd, correoElectronico = fsdPersona{nombre = Seba, edad = 324, genero = fsd, nacionalidad = fsdf}}
+            Muestra semen:
+            Semen{volumen = 100000.0, concentracion = 200.0, globulosBlancos = 3.12738127E8, vitalidad = 99, idPaciente = 9}
+
+

@@ -1,5 +1,6 @@
 package Interface.PPaciente;
 
+import domain.Orina;
 import java.sql.SQLException;
 import javax.swing.JPanel;
 
@@ -39,6 +40,18 @@ public class DialogPaciente extends javax.swing.JDialog {
             }
             case 7 -> {
                 AgregarMuestraSemen panel = new AgregarMuestraSemen(this);
+                cargarPanel(panel);
+            }
+            case 8 -> {
+                ModificarMuestraOrina panel = new ModificarMuestraOrina(this);
+                cargarPanel(panel);
+            }
+            case 9 -> {
+                ModificarMuestraSangre panel = new ModificarMuestraSangre(this);
+                cargarPanel(panel);
+            }
+            case 10 -> {
+                ModificarMuestraSemen panel = new ModificarMuestraSemen(this);
                 cargarPanel(panel);
             }
         }

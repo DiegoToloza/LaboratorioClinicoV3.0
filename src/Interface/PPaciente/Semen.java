@@ -8,7 +8,6 @@ public class Semen extends javax.swing.JPanel {
     SeleccionPacientes sp = null;
     
     public Semen(SeleccionPacientes se) throws SQLException {
-        initComponents();
         this.sp = se;
         initComponents();
         JdbcSemen jse = new JdbcSemen();
@@ -18,6 +17,10 @@ public class Semen extends javax.swing.JPanel {
             textConcentracion.setText("" + sem.getConcentracion());
             textGlobulosBlancos.setText("" + sem.getGlobulosBlancos());
             textVitalidad.setText("" + sem.getVitalidad());
+            botonAgregarMuestra.setVisible(false);
+        }else{
+            botonModificarMuestra.setVisible(false);
+            botonEliminarMuestra.setVisible(false);
         }
     }
 
@@ -40,9 +43,9 @@ public class Semen extends javax.swing.JPanel {
         textGlobulosBlancos = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
-        botonModificarMuestra1 = new javax.swing.JButton();
-        botonModificarMuestra2 = new javax.swing.JButton();
-        botonModificarMuestra3 = new javax.swing.JButton();
+        botonModificarMuestra = new javax.swing.JButton();
+        botonEliminarMuestra = new javax.swing.JButton();
+        botonAgregarMuestra = new javax.swing.JButton();
 
         setPreferredSize(new java.awt.Dimension(773, 327));
 
@@ -68,14 +71,24 @@ public class Semen extends javax.swing.JPanel {
         jLabel10.setForeground(new java.awt.Color(0, 0, 0));
         jLabel10.setText("aki ba lo ecsamene:");
 
-        botonModificarMuestra1.setText("Modificar Muestra");
-
-        botonModificarMuestra2.setText("Eliminar Muestra");
-
-        botonModificarMuestra3.setText("Agregar Muestra");
-        botonModificarMuestra3.addActionListener(new java.awt.event.ActionListener() {
+        botonModificarMuestra.setText("Modificar Muestra");
+        botonModificarMuestra.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonModificarMuestra3ActionPerformed(evt);
+                botonModificarMuestraActionPerformed(evt);
+            }
+        });
+
+        botonEliminarMuestra.setText("Eliminar Muestra");
+        botonEliminarMuestra.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonEliminarMuestraActionPerformed(evt);
+            }
+        });
+
+        botonAgregarMuestra.setText("Agregar Muestra");
+        botonAgregarMuestra.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonAgregarMuestraActionPerformed(evt);
             }
         });
 
@@ -100,11 +113,11 @@ public class Semen extends javax.swing.JPanel {
                             .addComponent(textVolumen, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(6, 6, 6)
-                        .addComponent(botonModificarMuestra3)
+                        .addComponent(botonAgregarMuestra)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(botonModificarMuestra1)
+                        .addComponent(botonModificarMuestra)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(botonModificarMuestra2)))
+                        .addComponent(botonEliminarMuestra)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 124, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel10)
@@ -139,9 +152,9 @@ public class Semen extends javax.swing.JPanel {
                             .addComponent(textVitalidad, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(41, 41, 41)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(botonModificarMuestra1)
-                            .addComponent(botonModificarMuestra2)
-                            .addComponent(botonModificarMuestra3)))
+                            .addComponent(botonModificarMuestra)
+                            .addComponent(botonEliminarMuestra)
+                            .addComponent(botonAgregarMuestra)))
                     .addGroup(layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 269, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -149,7 +162,7 @@ public class Semen extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void botonModificarMuestra3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonModificarMuestra3ActionPerformed
+    private void botonAgregarMuestraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAgregarMuestraActionPerformed
         try {
             DialogPaciente panel = new DialogPaciente(new javax.swing.JFrame(), true, 7, sp.paciente);
             panel.setLocationRelativeTo(this);
@@ -159,13 +172,36 @@ public class Semen extends javax.swing.JPanel {
         } catch (SQLException ex) {
             ex.printStackTrace(System.out);
         }
-    }//GEN-LAST:event_botonModificarMuestra3ActionPerformed
+    }//GEN-LAST:event_botonAgregarMuestraActionPerformed
+
+    private void botonModificarMuestraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonModificarMuestraActionPerformed
+        try {
+            DialogPaciente panel = new DialogPaciente(new javax.swing.JFrame(), true, 10, sp.paciente);
+            panel.setLocationRelativeTo(this);
+            panel.setVisible(true);
+            Semen semencito = new Semen(sp);
+            sp.cargarPanel(semencito);
+        } catch (SQLException ex) {
+            ex.printStackTrace(System.out);
+        }
+    }//GEN-LAST:event_botonModificarMuestraActionPerformed
+
+    private void botonEliminarMuestraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEliminarMuestraActionPerformed
+        try {
+            domain.Semen semen = new JdbcSemen().select(sp.paciente.getIdPaciente());
+            new JdbcSemen().delete(semen);
+            Semen semencito = new Semen(sp);
+            sp.cargarPanel(semencito);
+        } catch (SQLException ex) {
+            ex.printStackTrace(System.out);
+        }
+    }//GEN-LAST:event_botonEliminarMuestraActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton botonModificarMuestra1;
-    private javax.swing.JButton botonModificarMuestra2;
-    private javax.swing.JButton botonModificarMuestra3;
+    private javax.swing.JButton botonAgregarMuestra;
+    private javax.swing.JButton botonEliminarMuestra;
+    private javax.swing.JButton botonModificarMuestra;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel3;

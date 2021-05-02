@@ -4,15 +4,17 @@ import java.sql.SQLException;
 import jdbc.JdbcSemen;
 
 
-public class AgregarMuestraSemen extends javax.swing.JPanel {
+public class ModificarMuestraSemen extends javax.swing.JPanel {
     
     DialogPaciente manejo = null; 
+    domain.Semen semen = null;
 
-    public AgregarMuestraSemen(DialogPaciente p) {
+    public ModificarMuestraSemen(DialogPaciente p) throws SQLException {
         manejo = p;
         initComponents();
-        manejo.setSize(368, 395);
+        manejo.setSize(363, 395);
         manejo.setLocationRelativeTo(null);
+        this.semen = new JdbcSemen().select(manejo.paciente.getIdPaciente());
     }
 
     @SuppressWarnings("unchecked")
@@ -26,7 +28,7 @@ public class AgregarMuestraSemen extends javax.swing.JPanel {
         globulosBlancos = new javax.swing.JFormattedTextField();
         vitalidad = new javax.swing.JFormattedTextField();
         botonAtras = new javax.swing.JButton();
-        botonAgregarPaciente = new javax.swing.JButton();
+        botonActualizar = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -39,7 +41,7 @@ public class AgregarMuestraSemen extends javax.swing.JPanel {
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Agregar Semen");
+        jLabel1.setText("Modificar Semen");
 
         botonAtras.setText("Atras");
         botonAtras.addActionListener(new java.awt.event.ActionListener() {
@@ -48,10 +50,10 @@ public class AgregarMuestraSemen extends javax.swing.JPanel {
             }
         });
 
-        botonAgregarPaciente.setText("Agregar");
-        botonAgregarPaciente.addActionListener(new java.awt.event.ActionListener() {
+        botonActualizar.setText("Actualizar");
+        botonActualizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonAgregarPacienteActionPerformed(evt);
+                botonActualizarActionPerformed(evt);
             }
         });
 
@@ -89,7 +91,7 @@ public class AgregarMuestraSemen extends javax.swing.JPanel {
                     .addComponent(concentracion)
                     .addComponent(vitalidad)
                     .addComponent(globulosBlancos)
-                    .addComponent(botonAgregarPaciente, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(botonActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(47, 47, 47))
         );
         jPanel1Layout.setVerticalGroup(
@@ -116,7 +118,7 @@ public class AgregarMuestraSemen extends javax.swing.JPanel {
                 .addGap(53, 53, 53)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(botonAtras, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(botonAgregarPaciente, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(botonActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(26, Short.MAX_VALUE))
         );
 
@@ -132,21 +134,19 @@ public class AgregarMuestraSemen extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void botonAgregarPacienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAgregarPacienteActionPerformed
+    private void botonActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonActualizarActionPerformed
         try {
-            domain.Semen semen = new domain.Semen();
-            semen.setIdPaciente(manejo.paciente.getIdPaciente());
             semen.setVolumen(Double.parseDouble(volumen.getText()));
             semen.setConcentracion(Double.parseDouble(concentracion.getText()));
             semen.setGlobulosBlancos(Double.parseDouble(globulosBlancos.getText()));
             semen.setVitalidad(Integer.parseInt(vitalidad.getText()));
             JdbcSemen semen1 = new JdbcSemen();
-            semen1.insert(semen);
+            semen1.update(semen);
             manejo.setVisible(false);
         } catch (SQLException ex) {
             ex.printStackTrace(System.out);
         }
-    }//GEN-LAST:event_botonAgregarPacienteActionPerformed
+    }//GEN-LAST:event_botonActualizarActionPerformed
 
     private void botonAtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAtrasActionPerformed
         manejo.setVisible(false);
@@ -154,7 +154,7 @@ public class AgregarMuestraSemen extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton botonAgregarPaciente;
+    private javax.swing.JButton botonActualizar;
     private javax.swing.JButton botonAtras;
     private javax.swing.JFormattedTextField concentracion;
     private javax.swing.JFormattedTextField globulosBlancos;

@@ -1,18 +1,24 @@
 package Interface.PPaciente;
 
 import java.sql.SQLException;
-import jdbc.JdbcSemen;
+import jdbc.JdbcOrina;
 
 
-public class AgregarMuestraSemen extends javax.swing.JPanel {
+public class ModificarMuestraOrina extends javax.swing.JPanel {
     
     DialogPaciente manejo = null; 
+    domain.Orina orina = null;
 
-    public AgregarMuestraSemen(DialogPaciente p) {
+    public ModificarMuestraOrina(DialogPaciente p) {
         manejo = p;
         initComponents();
-        manejo.setSize(368, 395);
+        manejo.setSize(325, 395);
         manejo.setLocationRelativeTo(null);
+        try {
+            this.orina = new JdbcOrina().select(manejo.paciente.getIdPaciente());
+        } catch (SQLException ex) {
+            ex.printStackTrace(System.out);
+        }
     }
 
     @SuppressWarnings("unchecked")
@@ -21,12 +27,12 @@ public class AgregarMuestraSemen extends javax.swing.JPanel {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        volumen = new javax.swing.JFormattedTextField();
-        concentracion = new javax.swing.JFormattedTextField();
-        globulosBlancos = new javax.swing.JFormattedTextField();
-        vitalidad = new javax.swing.JFormattedTextField();
+        glucosa = new javax.swing.JFormattedTextField();
+        densidad = new javax.swing.JFormattedTextField();
+        ph = new javax.swing.JFormattedTextField();
+        sodio = new javax.swing.JFormattedTextField();
         botonAtras = new javax.swing.JButton();
-        botonAgregarPaciente = new javax.swing.JButton();
+        botonActualizar = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -39,7 +45,7 @@ public class AgregarMuestraSemen extends javax.swing.JPanel {
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Agregar Semen");
+        jLabel1.setText("Modificar Orina");
 
         botonAtras.setText("Atras");
         botonAtras.addActionListener(new java.awt.event.ActionListener() {
@@ -48,24 +54,24 @@ public class AgregarMuestraSemen extends javax.swing.JPanel {
             }
         });
 
-        botonAgregarPaciente.setText("Agregar");
-        botonAgregarPaciente.addActionListener(new java.awt.event.ActionListener() {
+        botonActualizar.setText("Actualizar");
+        botonActualizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonAgregarPacienteActionPerformed(evt);
+                botonActualizarActionPerformed(evt);
             }
         });
 
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel2.setText("Volumen:");
+        jLabel2.setText("Glucosa:");
 
         jLabel3.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel3.setText("Concentración:");
+        jLabel3.setText("Densidad:");
 
         jLabel4.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel4.setText("Globulos blancos:");
+        jLabel4.setText("pH:");
 
         jLabel5.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel5.setText("Vitalidad:");
+        jLabel5.setText("Sodio:");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -73,7 +79,7 @@ public class AgregarMuestraSemen extends javax.swing.JPanel {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 347, Short.MAX_VALUE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 308, Short.MAX_VALUE)
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(47, 47, 47)
@@ -85,11 +91,11 @@ public class AgregarMuestraSemen extends javax.swing.JPanel {
                     .addComponent(botonAtras, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(39, 39, 39)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(volumen, javax.swing.GroupLayout.DEFAULT_SIZE, 133, Short.MAX_VALUE)
-                    .addComponent(concentracion)
-                    .addComponent(vitalidad)
-                    .addComponent(globulosBlancos)
-                    .addComponent(botonAgregarPaciente, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(botonActualizar)
+                    .addComponent(glucosa, javax.swing.GroupLayout.DEFAULT_SIZE, 133, Short.MAX_VALUE)
+                    .addComponent(densidad)
+                    .addComponent(sodio)
+                    .addComponent(ph))
                 .addGap(47, 47, 47))
         );
         jPanel1Layout.setVerticalGroup(
@@ -99,24 +105,24 @@ public class AgregarMuestraSemen extends javax.swing.JPanel {
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(44, 44, 44)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(volumen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(glucosa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(concentracion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(densidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(globulosBlancos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ph, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(vitalidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(sodio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(53, 53, 53)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(botonAtras, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(botonAgregarPaciente, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(botonActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(26, Short.MAX_VALUE))
         );
 
@@ -132,21 +138,19 @@ public class AgregarMuestraSemen extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void botonAgregarPacienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAgregarPacienteActionPerformed
+    private void botonActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonActualizarActionPerformed
         try {
-            domain.Semen semen = new domain.Semen();
-            semen.setIdPaciente(manejo.paciente.getIdPaciente());
-            semen.setVolumen(Double.parseDouble(volumen.getText()));
-            semen.setConcentracion(Double.parseDouble(concentracion.getText()));
-            semen.setGlobulosBlancos(Double.parseDouble(globulosBlancos.getText()));
-            semen.setVitalidad(Integer.parseInt(vitalidad.getText()));
-            JdbcSemen semen1 = new JdbcSemen();
-            semen1.insert(semen);
+            orina.setGlucosa(Double.parseDouble(glucosa.getText()));
+            orina.setDensidad(Double.parseDouble(densidad.getText()));
+            orina.setpH(Integer.parseInt(ph.getText()));
+            orina.setSodio(Integer.parseInt(sodio.getText()));
+            JdbcOrina orina1 = new JdbcOrina();
+            orina1.update(orina);
             manejo.setVisible(false);
         } catch (SQLException ex) {
             ex.printStackTrace(System.out);
         }
-    }//GEN-LAST:event_botonAgregarPacienteActionPerformed
+    }//GEN-LAST:event_botonActualizarActionPerformed
 
     private void botonAtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAtrasActionPerformed
         manejo.setVisible(false);
@@ -154,17 +158,17 @@ public class AgregarMuestraSemen extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton botonAgregarPaciente;
+    private javax.swing.JButton botonActualizar;
     private javax.swing.JButton botonAtras;
-    private javax.swing.JFormattedTextField concentracion;
-    private javax.swing.JFormattedTextField globulosBlancos;
+    private javax.swing.JFormattedTextField densidad;
+    private javax.swing.JFormattedTextField glucosa;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JFormattedTextField vitalidad;
-    private javax.swing.JFormattedTextField volumen;
+    private javax.swing.JFormattedTextField ph;
+    private javax.swing.JFormattedTextField sodio;
     // End of variables declaration//GEN-END:variables
 }

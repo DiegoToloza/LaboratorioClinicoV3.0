@@ -206,11 +206,17 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Modificar Muestra"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonModificarMuestraActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="botonEliminarMuestra">
       <Properties>
         <Property name="text" type="java.lang.String" value="Eliminar Muestra"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonEliminarMuestraActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

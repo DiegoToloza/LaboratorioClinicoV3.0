@@ -11,7 +11,7 @@ public class AgregarMuestraOrina extends javax.swing.JPanel {
     public AgregarMuestraOrina(DialogPaciente p) {
         manejo = p;
         initComponents();
-        manejo.setSize(323, 395);
+        manejo.setSize(325, 395);
         manejo.setLocationRelativeTo(null);
     }
 

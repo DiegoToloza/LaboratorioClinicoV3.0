@@ -17,7 +17,12 @@ public class Orina extends javax.swing.JPanel {
             textDensidad.setText("" + or.getDensidad());
             textPh.setText("" + or.getpH());
             textSodio.setText("" + or.getSodio());
+            botonAgregarMuestra.setVisible(false);
+        }else{
+            botonModificarMuestra.setVisible(false);
+            botonEliminarMuestra.setVisible(false);
         }
+        
     }
 
     /**
@@ -76,8 +81,18 @@ public class Orina extends javax.swing.JPanel {
         });
 
         botonModificarMuestra.setText("Modificar Muestra");
+        botonModificarMuestra.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonModificarMuestraActionPerformed(evt);
+            }
+        });
 
         botonEliminarMuestra.setText("Eliminar Muestra");
+        botonEliminarMuestra.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonEliminarMuestraActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -170,6 +185,29 @@ public class Orina extends javax.swing.JPanel {
             ex.printStackTrace(System.out);
         }
     }//GEN-LAST:event_botonAgregarMuestraActionPerformed
+
+    private void botonModificarMuestraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonModificarMuestraActionPerformed
+        try {
+            DialogPaciente panel = new DialogPaciente(new javax.swing.JFrame(), true, 8, sp.paciente);
+            panel.setLocationRelativeTo(this);
+            panel.setVisible(true);
+            Orina pipi = new Orina(sp);
+            sp.cargarPanel(pipi);
+        } catch (SQLException ex) {
+            ex.printStackTrace(System.out);
+        }
+    }//GEN-LAST:event_botonModificarMuestraActionPerformed
+
+    private void botonEliminarMuestraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEliminarMuestraActionPerformed
+        try {
+            domain.Orina orina = new JdbcOrina().select(sp.paciente.getIdPaciente());
+            new JdbcOrina().delete(orina);
+            Orina pipi = new Orina(sp);
+            sp.cargarPanel(pipi);
+        } catch (SQLException ex) {
+            ex.printStackTrace(System.out);
+        }
+    }//GEN-LAST:event_botonEliminarMuestraActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

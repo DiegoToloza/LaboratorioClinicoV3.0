@@ -8,7 +8,6 @@ public class Sangre extends javax.swing.JPanel {
     SeleccionPacientes sp = null;
     
     public Sangre(SeleccionPacientes sa) throws SQLException {
-        initComponents();
         this.sp = sa;
         initComponents();
         JdbcSangre jsa = new JdbcSangre();
@@ -18,6 +17,10 @@ public class Sangre extends javax.swing.JPanel {
             textReticulocitos.setText("" + san.getReticulocitos());
             textNeutrofilos.setText("" + san.getNeutrofilos());
             textPlaquetas.setText("" + san.getPlaquetas());
+            botonAgregarMuestra.setVisible(false);
+        }else{
+            botonEliminarMuestra.setVisible(false);
+            botonModificarMuestra.setVisible(false);
         }
     }
 
@@ -41,8 +44,8 @@ public class Sangre extends javax.swing.JPanel {
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         botonAgregarMuestra = new javax.swing.JButton();
+        botonEliminarMuestra = new javax.swing.JButton();
         botonModificarMuestra = new javax.swing.JButton();
-        botonModificarMuestra1 = new javax.swing.JButton();
 
         setPreferredSize(new java.awt.Dimension(773, 327));
 
@@ -75,9 +78,19 @@ public class Sangre extends javax.swing.JPanel {
             }
         });
 
-        botonModificarMuestra.setText("Eliminar Muestra");
+        botonEliminarMuestra.setText("Eliminar Muestra");
+        botonEliminarMuestra.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonEliminarMuestraActionPerformed(evt);
+            }
+        });
 
-        botonModificarMuestra1.setText("Modificar Muestra");
+        botonModificarMuestra.setText("Modificar Muestra");
+        botonModificarMuestra.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonModificarMuestraActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -101,9 +114,9 @@ public class Sangre extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(botonAgregarMuestra)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(botonModificarMuestra1)
+                        .addComponent(botonModificarMuestra)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(botonModificarMuestra)))
+                        .addComponent(botonEliminarMuestra)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 215, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -139,8 +152,8 @@ public class Sangre extends javax.swing.JPanel {
                         .addGap(41, 41, 41)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(botonAgregarMuestra)
-                            .addComponent(botonModificarMuestra)
-                            .addComponent(botonModificarMuestra1)))
+                            .addComponent(botonEliminarMuestra)
+                            .addComponent(botonModificarMuestra)))
                     .addGroup(layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 269, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -160,11 +173,34 @@ public class Sangre extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_botonAgregarMuestraActionPerformed
 
+    private void botonModificarMuestraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonModificarMuestraActionPerformed
+        try {
+            DialogPaciente panel = new DialogPaciente(new javax.swing.JFrame(), true, 9, sp.paciente);
+            panel.setLocationRelativeTo(this);
+            panel.setVisible(true);
+            Sangre sangrecita = new Sangre(sp);
+            sp.cargarPanel(sangrecita);
+        } catch (SQLException ex) {
+            ex.printStackTrace(System.out);
+        }
+    }//GEN-LAST:event_botonModificarMuestraActionPerformed
+
+    private void botonEliminarMuestraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEliminarMuestraActionPerformed
+        try {
+            domain.Sangre sangre = new JdbcSangre().select(sp.paciente.getIdPaciente());
+            new JdbcSangre().delete(sangre);
+            Sangre sangrecita = new Sangre(sp);
+            sp.cargarPanel(sangrecita);
+        } catch (SQLException ex) {
+            ex.printStackTrace(System.out);
+        }
+    }//GEN-LAST:event_botonEliminarMuestraActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonAgregarMuestra;
+    private javax.swing.JButton botonEliminarMuestra;
     private javax.swing.JButton botonModificarMuestra;
-    private javax.swing.JButton botonModificarMuestra1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel3;

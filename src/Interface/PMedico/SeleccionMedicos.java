@@ -56,7 +56,7 @@ public class SeleccionMedicos extends javax.swing.JPanel {
 
         jPanel1.setBackground(new java.awt.Color(204, 204, 204));
 
-        Imagen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interface/seba_100.png"))); // NOI18N
+        Imagen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interface/PNG/seba_100.png"))); // NOI18N
 
         Nombre.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         Nombre.setForeground(new java.awt.Color(0, 0, 0));

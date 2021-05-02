@@ -1,10 +1,13 @@
 package Interface;
 
-
 import Interface.PMedico.Medico;
 import Interface.PPaciente.Paciente;
+import domain.*;
+import java.io.*;
 import java.sql.SQLException;
+import java.util.*;
 import javax.swing.JPanel;
+import jdbc.*;
 
 public class Menu extends javax.swing.JFrame {
 
@@ -12,8 +15,8 @@ public class Menu extends javax.swing.JFrame {
         setUndecorated(true);
         initComponents();
     }
-    
-    private void cargarPanel(JPanel nuevoPanel){
+
+    private void cargarPanel(JPanel nuevoPanel) {
         jPanel3.removeAll();
         jPanel3.add(nuevoPanel);
         jPanel3.repaint();
@@ -31,6 +34,7 @@ public class Menu extends javax.swing.JFrame {
         BotonPacientes = new javax.swing.JButton();
         BotonSalir = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
+        BotonReporte = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -66,6 +70,13 @@ public class Menu extends javax.swing.JFrame {
         jPanel3.setBackground(new java.awt.Color(204, 204, 204));
         jPanel3.setLayout(new java.awt.CardLayout());
 
+        BotonReporte.setText("Reporte");
+        BotonReporte.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotonReporteActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -80,7 +91,8 @@ public class Menu extends javax.swing.JFrame {
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(BotonMedico, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(BotonPacientes, javax.swing.GroupLayout.DEFAULT_SIZE, 125, Short.MAX_VALUE)
-                            .addComponent(BotonSalir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(BotonSalir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(BotonReporte, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 595, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0))
@@ -95,6 +107,8 @@ public class Menu extends javax.swing.JFrame {
                 .addGap(33, 33, 33)
                 .addComponent(BotonPacientes, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(BotonReporte, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(BotonSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(45, 45, 45))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
@@ -152,6 +166,47 @@ public class Menu extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_BotonMedicoActionPerformed
 
+    private void BotonReporteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonReporteActionPerformed
+        File reporte = new File("Reporte.txt");
+        PrintWriter salida;
+        try {
+            List<domain.Medico> listaMedicos = new JdbcMedico().select();
+            salida = new PrintWriter(reporte);
+            salida.println("    Reporte de datos.\n\n");
+            for (domain.Medico medico : listaMedicos) {
+                salida.println("     Médico:\n");
+                salida.println("     " + medico.toString() + "\n");
+                salida.println("     Paciente(s) del Médico:\n");
+                Map<Integer, domain.Paciente> mapaPaciente = new JdbcPaciente().selectMedico(medico.getIdMedico());
+                for (domain.Paciente paciente : mapaPaciente.values()) {
+                    salida.println("        " + paciente.toString());
+                    Orina orina = new JdbcOrina().select(paciente.getIdPaciente());
+                    Sangre sangre = new JdbcSangre().select(paciente.getIdPaciente());
+                    Semen semen = new JdbcSemen().select(paciente.getIdPaciente());
+                    if(orina != null){
+                        salida.println("");
+                        salida.println("            Muestra orina:");
+                        salida.println("            " + orina.escribir());
+                    }
+                    if(sangre != null){
+                        salida.println("");
+                        salida.println("            Muestra sangre:");
+                        salida.println("            " + sangre.escribir() + "\n");
+                    }
+                    if(semen != null){
+                        salida.println("            Muestra semen:");
+                        salida.println("            " + semen.escribir());
+                        salida.println("");
+                    }
+                    salida.println("");
+                }
+            }
+            salida.close();
+        } catch (FileNotFoundException | SQLException ex) {
+            ex.printStackTrace(System.out);
+        }
+    }//GEN-LAST:event_BotonReporteActionPerformed
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -187,6 +242,7 @@ public class Menu extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BotonMedico;
     private javax.swing.JButton BotonPacientes;
+    private javax.swing.JButton BotonReporte;
     private javax.swing.JButton BotonSalir;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
