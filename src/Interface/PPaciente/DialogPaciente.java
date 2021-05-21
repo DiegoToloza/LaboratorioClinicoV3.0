@@ -54,6 +54,10 @@ public class DialogPaciente extends javax.swing.JDialog {
                 ModificarMuestraSemen panel = new ModificarMuestraSemen(this);
                 cargarPanel(panel);
             }
+            case 11 -> {
+                CambiarDeMedico panel = new CambiarDeMedico(this);
+                cargarPanel(panel);
+            }
         }
     }
 
