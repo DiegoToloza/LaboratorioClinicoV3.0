@@ -4,7 +4,7 @@ import java.sql.SQLException;
 import jdbc.JdbcSemen;
 
 public class Semen extends javax.swing.JPanel {
-
+    
     SeleccionPacientes sp = null;
     
     public Semen(SeleccionPacientes se) throws SQLException {
@@ -12,15 +12,52 @@ public class Semen extends javax.swing.JPanel {
         initComponents();
         JdbcSemen jse = new JdbcSemen();
         domain.Semen sem = jse.select(se.paciente.getIdPaciente());
-        if(sem != null){
+        if (sem != null) {
             textVolumen.setText("" + sem.getVolumen());
             textConcentracion.setText("" + sem.getConcentracion());
             textGlobulosBlancos.setText("" + sem.getGlobulosBlancos());
             textVitalidad.setText("" + sem.getVitalidad());
             botonAgregarMuestra.setVisible(false);
-        }else{
+        } else {
             botonModificarMuestra.setVisible(false);
             botonEliminarMuestra.setVisible(false);
+        }
+        
+        if (sem != null) {
+            
+            if (sem.getVolumen() < 1.5) {
+                textVolumenExamen.setText("Niveles bajos");
+            } else if (sem.getVolumen() >= 1.5 && sem.getVolumen() <= 5) {
+                textVolumenExamen.setText("Niveles normales");
+            } else {
+                textVolumenExamen.setText("Niveles altos");
+            }
+            
+            if (sem.getConcentracion() < 20){
+                textConcentracionExamen.setText("Niveles bajos");
+            } else if (sem.getConcentracion() >= 20 && sem.getConcentracion() <= 150){
+                textConcentracionExamen.setText("Niveles normales");
+            } else{
+                textConcentracionExamen.setText("Niveles altos");
+            }
+            
+            if (sem.getGlobulosBlancos() <= 1){
+                textGlobulosBlancosExamen.setText("Niveles bajos");
+            }else {
+                textGlobulosBlancosExamen.setText("Niveles normales");
+            }
+            
+            if (sem.getVitalidad() < 58){
+                textVitalidadExamen.setText("Niveles bajos");
+            } else {
+                textVitalidadExamen.setText("Niveles normales");
+            }
+            
+        } else {
+            textVolumenExamen.setText("No ha ingresado datos");
+            textConcentracionExamen.setText("No ha ingresado datos");
+            textGlobulosBlancosExamen.setText("No ha ingresado datos");
+            textVitalidadExamen.setText("No ha ingresado datos");
         }
     }
 
@@ -41,7 +78,6 @@ public class Semen extends javax.swing.JPanel {
         textConcentracion = new javax.swing.JLabel();
         textVitalidad = new javax.swing.JLabel();
         textGlobulosBlancos = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         botonModificarMuestra = new javax.swing.JButton();
         botonEliminarMuestra = new javax.swing.JButton();
@@ -51,6 +87,10 @@ public class Semen extends javax.swing.JPanel {
         jLabel2 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
+        textVolumenExamen = new javax.swing.JLabel();
+        textConcentracionExamen = new javax.swing.JLabel();
+        textGlobulosBlancosExamen = new javax.swing.JLabel();
+        textVitalidadExamen = new javax.swing.JLabel();
 
         setPreferredSize(new java.awt.Dimension(773, 327));
 
@@ -78,11 +118,9 @@ public class Semen extends javax.swing.JPanel {
 
         textGlobulosBlancos.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
 
-        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interface/PNG/Skinner.jpg"))); // NOI18N
-
-        jLabel10.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        jLabel10.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel10.setText("aki ba lo ecsamene:");
+        jLabel10.setText("RANGOS OBTENIDOS");
 
         botonModificarMuestra.setText("Modificar Muestra");
         botonModificarMuestra.addActionListener(new java.awt.event.ActionListener() {
@@ -125,6 +163,14 @@ public class Semen extends javax.swing.JPanel {
         jLabel11.setForeground(new java.awt.Color(0, 0, 0));
         jLabel11.setText("> 58 %");
 
+        textVolumenExamen.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+
+        textConcentracionExamen.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+
+        textGlobulosBlancosExamen.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+
+        textVitalidadExamen.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -141,7 +187,7 @@ public class Semen extends javax.swing.JPanel {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(botonEliminarMuestra))
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addGroup(layout.createSequentialGroup()
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                             .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -155,11 +201,11 @@ public class Semen extends javax.swing.JPanel {
                                                     .addComponent(textConcentracion, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(textVitalidad, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(textVitalidad, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addComponent(jLabel4))
                                 .addGap(105, 105, 105)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 130, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 141, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -169,13 +215,14 @@ public class Semen extends javax.swing.JPanel {
                             .addComponent(jLabel8)
                             .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(52, 52, 52)))
-                .addGap(31, 31, 31)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel9)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel10)
-                        .addGap(60, 60, 60)))
-                .addGap(32, 32, 32))
+                .addGap(60, 60, 60)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(textVolumenExamen, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(textConcentracionExamen, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(textGlobulosBlancosExamen, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(textVitalidadExamen, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(92, 92, 92))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -185,37 +232,37 @@ public class Semen extends javax.swing.JPanel {
                     .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel10))
                 .addGap(17, 17, 17)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                            .addComponent(textVolumen, javax.swing.GroupLayout.DEFAULT_SIZE, 27, Short.MAX_VALUE)
-                                            .addComponent(jLabel7)
-                                            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                        .addGap(20, 20, 20)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(textConcentracion, javax.swing.GroupLayout.DEFAULT_SIZE, 27, Short.MAX_VALUE)
-                                            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                                    .addComponent(jLabel2))
-                                .addGap(33, 33, 33)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(textGlobulosBlancos, javax.swing.GroupLayout.DEFAULT_SIZE, 27, Short.MAX_VALUE)
-                                    .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                            .addComponent(jLabel8))
-                        .addGap(26, 26, 26)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(textVitalidad, javax.swing.GroupLayout.DEFAULT_SIZE, 27, Short.MAX_VALUE)
-                            .addComponent(jLabel11)
-                            .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(58, 58, 58)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(botonModificarMuestra)
-                            .addComponent(botonEliminarMuestra)
-                            .addComponent(botonAgregarMuestra)))
-                    .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 269, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(textVolumen, javax.swing.GroupLayout.DEFAULT_SIZE, 27, Short.MAX_VALUE)
+                            .addComponent(jLabel7)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(textVolumenExamen, javax.swing.GroupLayout.DEFAULT_SIZE, 27, Short.MAX_VALUE))
+                        .addGap(20, 20, 20)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(textConcentracionExamen, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(textConcentracion, javax.swing.GroupLayout.DEFAULT_SIZE, 27, Short.MAX_VALUE)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(33, 33, 33)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(textGlobulosBlancos, javax.swing.GroupLayout.DEFAULT_SIZE, 27, Short.MAX_VALUE)
+                            .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(textGlobulosBlancosExamen, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(jLabel8))
+                .addGap(26, 26, 26)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(textVitalidadExamen, javax.swing.GroupLayout.DEFAULT_SIZE, 27, Short.MAX_VALUE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(textVitalidad, javax.swing.GroupLayout.DEFAULT_SIZE, 27, Short.MAX_VALUE)
+                        .addComponent(jLabel11)
+                        .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGap(58, 58, 58)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(botonModificarMuestra)
+                    .addComponent(botonEliminarMuestra)
+                    .addComponent(botonAgregarMuestra))
                 .addContainerGap(8, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -270,10 +317,13 @@ public class Semen extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JLabel textConcentracion;
+    private javax.swing.JLabel textConcentracionExamen;
     private javax.swing.JLabel textGlobulosBlancos;
+    private javax.swing.JLabel textGlobulosBlancosExamen;
     private javax.swing.JLabel textVitalidad;
+    private javax.swing.JLabel textVitalidadExamen;
     private javax.swing.JLabel textVolumen;
+    private javax.swing.JLabel textVolumenExamen;
     // End of variables declaration//GEN-END:variables
 }
