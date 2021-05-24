@@ -3,7 +3,7 @@ package jdbc;
 import domain.*;
 import java.sql.*;
 
-public class JdbcSemen {
+public class JdbcSemen implements IGenericoJdbcMuestra {
 
     private Connection userConn;
 
@@ -21,8 +21,10 @@ public class JdbcSemen {
     }
 
     //METODOS
-    public void insert(Semen semen) throws SQLException {
-
+    @Override
+    public void insert(IMuestraGenerica muestra) throws SQLException {
+        
+        Semen semen = (Semen) muestra;
         Connection conn = null;
         PreparedStatement ps = null;
 
@@ -43,8 +45,10 @@ public class JdbcSemen {
         }
     }
 
-    public void update(Semen semen) throws SQLException {
-
+    @Override
+    public void update(IMuestraGenerica muestra) throws SQLException {
+        
+        Semen semen = (Semen) muestra;
         Connection conn = null;
         PreparedStatement ps = null;
 
@@ -66,8 +70,10 @@ public class JdbcSemen {
         }
     }
 
-    public void delete(Semen semen) throws SQLException {
+    @Override
+    public void delete(IMuestraGenerica muestra) throws SQLException {
 
+        Semen semen = (Semen) muestra;
         Connection conn = null;
         PreparedStatement ps = null;
 

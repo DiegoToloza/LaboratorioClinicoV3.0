@@ -25,43 +25,29 @@ public class Orina extends javax.swing.JPanel {
 
         if (or != null) {
 
-            if (or.getGlucosa() < 0) {
-                textGlucosaExamen.setText("Valores inválidos");
-            } else if (or.getGlucosa() >= 0 && or.getGlucosa() <= 0.8) {
-                textGlucosaExamen.setText("Niveles normales");
-            } else {
-                textGlucosaExamen.setText("Niveles altos");
-            }
+            textGlucosaExamen.setText(validar(or.getGlucosa(), 0, 0.8));
 
-            if (or.getDensidad() < 1000) {
-                textDensidadExamen.setText("Niveles bajos");
-            } else if (or.getGlucosa() >= 1000 && or.getGlucosa() <= 1030) {
-                textDensidadExamen.setText("Niveles normales");
-            } else {
-                textDensidadExamen.setText("Niveles altos");
-            }
-            
-            if (or.getpH() < 4) {
-                textPhExamen.setText("Niveles bajos");
-            } else if (or.getpH() >= 4 && or.getpH() <= 8){
-                textPhExamen.setText("Niveles normales");
-            } else {
-                textPhExamen.setText("Niveles altos");
-            }
-            
-            if (or.getSodio() < 40) {
-                textSodioExamen.setText("Niveles bajos");
-            } else if (or.getSodio() >= 40 && or.getSodio() <= 220){
-                textSodioExamen.setText("Niveles normales");
-            } else {
-                textSodioExamen.setText("Niveles altos");
-            }
-            
+            textDensidadExamen.setText(validar(or.getDensidad(), 1000, 1030));
+
+            textPhExamen.setText(validar(or.getpH(), 4, 8));
+
+            textSodioExamen.setText(validar(or.getSodio(), 40, 220));
+
         } else {
             textGlucosaExamen.setText("No ha ingresado datos");
             textDensidadExamen.setText("No ha ingresado datos");
             textPhExamen.setText("No ha ingresado datos");
             textSodioExamen.setText("No ha ingresado datos");
+        }
+    }
+
+    private String validar(double comparador, double min, double max) {
+        if (comparador < min) {
+            return "Niveles bajos";
+        } else if (comparador >= min && comparador <= max) {
+            return "Niveles normales";
+        } else {
+            return "Niveles altos";
         }
     }
 
@@ -239,8 +225,8 @@ public class Orina extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addComponent(textGlucosa, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(RangoGlucosa, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(RangoGlucosa, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(Glucosa, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(textGlucosaExamen, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
