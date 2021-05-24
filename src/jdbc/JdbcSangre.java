@@ -3,7 +3,7 @@ package jdbc;
 import domain.*;
 import java.sql.*;
 
-public class JdbcSangre {
+public class JdbcSangre implements IGenericoJdbcMuestra {
 
     private Connection userConn;
 
@@ -21,8 +21,10 @@ public class JdbcSangre {
     }
 
     //METODOS
-    public void insert(Sangre sangre) throws SQLException {
-
+    @Override
+    public void insert(IMuestraGenerica muestra) throws SQLException {
+        
+        Sangre sangre = (Sangre) muestra;
         Connection conn = null;
         PreparedStatement ps = null;
 
@@ -43,8 +45,10 @@ public class JdbcSangre {
         }
     }
 
-    public void update(Sangre sangre) throws SQLException {
-
+    @Override
+    public void update(IMuestraGenerica muestra) throws SQLException {
+        
+        Sangre sangre = (Sangre) muestra;
         Connection conn = null;
         PreparedStatement ps = null;
 
@@ -65,9 +69,11 @@ public class JdbcSangre {
             }
         }
     }
-
-    public void delete(Sangre sangre) throws SQLException {
-
+    
+    @Override
+    public void delete(IMuestraGenerica muestra) throws SQLException {
+        
+        Sangre sangre = (Sangre) muestra;
         Connection conn = null;
         PreparedStatement ps = null;
 

@@ -4,7 +4,7 @@ import domain.*;
 import java.sql.*;
 import java.util.*;
 
-public class JdbcOrina {
+public class JdbcOrina implements IGenericoJdbcMuestra {
 
     private Connection userConn;
 
@@ -22,8 +22,10 @@ public class JdbcOrina {
     }
 
     //METODOS
-    public void insert(Orina orina) throws SQLException {
+    @Override
+    public void insert(IMuestraGenerica muestra) throws SQLException {
 
+        Orina orina = (Orina) muestra;
         Connection conn = null;
         PreparedStatement ps = null;
 
@@ -44,8 +46,10 @@ public class JdbcOrina {
         }
     }
 
-    public void update(Orina orina) throws SQLException {
+    @Override
+    public void update(IMuestraGenerica muestra) throws SQLException {
 
+        Orina orina = (Orina) muestra;
         Connection conn = null;
         PreparedStatement ps = null;
 
@@ -67,8 +71,10 @@ public class JdbcOrina {
         }
     }
 
-    public void delete(Orina orina) throws SQLException {
-
+    @Override
+    public void delete(IMuestraGenerica muestra) throws SQLException {
+        
+        Orina orina = (Orina) muestra;
         Connection conn = null;
         PreparedStatement ps = null;
 

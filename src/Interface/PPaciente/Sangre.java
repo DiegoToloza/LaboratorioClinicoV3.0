@@ -25,43 +25,29 @@ public class Sangre extends javax.swing.JPanel {
 
         if (san != null) {
 
-            if (san.getHemogoblina() < 11.6) {
-                textHemoglobinaExamen.setText("Niveles bajos");
-            } else if (san.getHemogoblina() >= 11.6 && san.getHemogoblina() <= 16.6) {
-                textHemoglobinaExamen.setText("Niveles normales");
-            } else {
-                textHemoglobinaExamen.setText("Niveles altos");
-            }
+            textHemoglobinaExamen.setText(validar(san.getHemogoblina(), 11.6, 16.6));
+            
+            textReticulocitosExamen.setText(validar(san.getReticulocitos(), 0.5, 2.5));
+            
+            textNeutrofilosExamen.setText(validar(san.getNeutrofilos(), 40, 60));
 
-            if (san.getReticulocitos() < 0.5) {
-                textReticulocitosExamen.setText("Niveles bajos");
-            } else if (san.getReticulocitos() >= 0.5 && san.getReticulocitos() <= 2.5) {
-                textReticulocitosExamen.setText("Niveles normales");
-            } else {
-                textReticulocitosExamen.setText("Niveles altos");
-            }
-
-            if (san.getNeutrofilos() < 40) {
-                textNeutrofilosExamen.setText("Niveles bajos");
-            } else if (san.getNeutrofilos() >= 40 && san.getNeutrofilos() <= 60) {
-                textNeutrofilosExamen.setText("Niveles normales");
-            } else {
-                textNeutrofilosExamen.setText("Niveles altos");
-            }
-
-            if (san.getPlaquetas() < 150000) {
-                textPlaquetasExamen.setText("Niveles bajos");
-            } else if (san.getPlaquetas() >= 150000 && san.getPlaquetas() <= 400000) {
-                textPlaquetasExamen.setText("Niveles normales");
-            } else {
-                textPlaquetasExamen.setText("Niveles altos");
-            }
+            textPlaquetasExamen.setText(validar(san.getPlaquetas(), 150000, 400000));
 
         } else {
             textHemoglobinaExamen.setText("No ha ingresado datos");
             textReticulocitosExamen.setText("No ha ingresado datos");
             textNeutrofilosExamen.setText("No ha ingresado datos");
             textPlaquetasExamen.setText("No ha ingresado datos");
+        }
+    }
+
+    private String validar(double comparador, double min, double max) {
+        if (comparador < min) {
+            return "Niveles bajos";
+        } else if (comparador >= min && comparador <= max) {
+            return "Niveles normales";
+        } else {
+            return "Niveles altos";
         }
     }
 

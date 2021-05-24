@@ -4,9 +4,9 @@ import java.sql.SQLException;
 import jdbc.JdbcSemen;
 
 public class Semen extends javax.swing.JPanel {
-    
+
     SeleccionPacientes sp = null;
-    
+
     public Semen(SeleccionPacientes se) throws SQLException {
         this.sp = se;
         initComponents();
@@ -22,42 +22,32 @@ public class Semen extends javax.swing.JPanel {
             botonModificarMuestra.setVisible(false);
             botonEliminarMuestra.setVisible(false);
         }
-        
+
         if (sem != null) {
             
-            if (sem.getVolumen() < 1.5) {
-                textVolumenExamen.setText("Niveles bajos");
-            } else if (sem.getVolumen() >= 1.5 && sem.getVolumen() <= 5) {
-                textVolumenExamen.setText("Niveles normales");
-            } else {
-                textVolumenExamen.setText("Niveles altos");
-            }
+            textVolumenExamen.setText(validar(sem.getVolumen(), 1.5, 5));
+
+            textConcentracionExamen.setText(validar(sem.getConcentracion(), 20, 150));
             
-            if (sem.getConcentracion() < 20){
-                textConcentracionExamen.setText("Niveles bajos");
-            } else if (sem.getConcentracion() >= 20 && sem.getConcentracion() <= 150){
-                textConcentracionExamen.setText("Niveles normales");
-            } else{
-                textConcentracionExamen.setText("Niveles altos");
-            }
+            textGlobulosBlancosExamen.setText(validar(sem.getGlobulosBlancos(), 0.1, 1));
             
-            if (sem.getGlobulosBlancos() <= 1){
-                textGlobulosBlancosExamen.setText("Niveles bajos");
-            }else {
-                textGlobulosBlancosExamen.setText("Niveles normales");
-            }
-            
-            if (sem.getVitalidad() < 58){
-                textVitalidadExamen.setText("Niveles bajos");
-            } else {
-                textVitalidadExamen.setText("Niveles normales");
-            }
-            
+            textVitalidadExamen.setText(validar(sem.getVitalidad(), 58, 100));
+
         } else {
             textVolumenExamen.setText("No ha ingresado datos");
             textConcentracionExamen.setText("No ha ingresado datos");
             textGlobulosBlancosExamen.setText("No ha ingresado datos");
             textVitalidadExamen.setText("No ha ingresado datos");
+        }
+    }
+
+    private String validar(double comparador, double min, double max) {
+        if (comparador < min) {
+            return "Niveles bajos";
+        } else if (comparador >= min && comparador <= max) {
+            return "Niveles normales";
+        } else {
+            return "Niveles altos";
         }
     }
 
@@ -157,7 +147,7 @@ public class Semen extends javax.swing.JPanel {
 
         jLabel8.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel8.setText("> 1.0 MM/mL");
+        jLabel8.setText("0.1 - 1.0 MM/mL");
 
         jLabel11.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(0, 0, 0));
@@ -254,10 +244,9 @@ public class Semen extends javax.swing.JPanel {
                 .addGap(26, 26, 26)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(textVitalidadExamen, javax.swing.GroupLayout.DEFAULT_SIZE, 27, Short.MAX_VALUE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(textVitalidad, javax.swing.GroupLayout.DEFAULT_SIZE, 27, Short.MAX_VALUE)
-                        .addComponent(jLabel11)
-                        .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(textVitalidad, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 27, Short.MAX_VALUE)
+                    .addComponent(jLabel11, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(58, 58, 58)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(botonModificarMuestra)

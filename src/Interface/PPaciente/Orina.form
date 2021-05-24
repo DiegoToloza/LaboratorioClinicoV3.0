@@ -100,9 +100,9 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="103" groupAlignment="1" attributes="0">
                       <Component id="textGlucosa" min="-2" pref="27" max="-2" attributes="0"/>
-                      <Group type="103" alignment="1" groupAlignment="3" attributes="0">
+                      <Group type="103" alignment="1" groupAlignment="0" attributes="0">
                           <Component id="RangoGlucosa" alignment="1" min="-2" pref="35" max="-2" attributes="0"/>
-                          <Component id="Glucosa" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
+                          <Component id="Glucosa" min="-2" pref="35" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <Component id="textGlucosaExamen" alignment="0" min="-2" pref="35" max="-2" attributes="0"/>
