@@ -37,6 +37,7 @@ public class Menu extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         BotonReporte = new javax.swing.JButton();
         BotonBusquedaPorParametro = new javax.swing.JButton();
+        BotonBusquedaPorMuestra = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -86,6 +87,13 @@ public class Menu extends javax.swing.JFrame {
             }
         });
 
+        BotonBusquedaPorMuestra.setText("Busqueda Muestra");
+        BotonBusquedaPorMuestra.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotonBusquedaPorMuestraActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -99,10 +107,11 @@ public class Menu extends javax.swing.JFrame {
                         .addGap(46, 46, 46)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(BotonMedico, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(BotonPacientes, javax.swing.GroupLayout.DEFAULT_SIZE, 125, Short.MAX_VALUE)
+                            .addComponent(BotonPacientes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(BotonSalir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(BotonReporte, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(BotonBusquedaPorParametro, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 125, Short.MAX_VALUE))))
+                            .addComponent(BotonBusquedaPorParametro, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(BotonBusquedaPorMuestra, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 595, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0))
@@ -118,6 +127,8 @@ public class Menu extends javax.swing.JFrame {
                 .addComponent(BotonPacientes, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(BotonBusquedaPorParametro, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(BotonBusquedaPorMuestra, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(BotonReporte, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -228,6 +239,15 @@ public class Menu extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_BotonBusquedaPorParametroActionPerformed
 
+    private void BotonBusquedaPorMuestraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonBusquedaPorMuestraActionPerformed
+        try {
+            BusquedaPorMuestra hola = new BusquedaPorMuestra();
+            cargarPanel(hola);
+        } catch (SQLException ex) {
+            ex.printStackTrace(System.out);
+        }
+    }//GEN-LAST:event_BotonBusquedaPorMuestraActionPerformed
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -261,6 +281,7 @@ public class Menu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BotonBusquedaPorMuestra;
     private javax.swing.JButton BotonBusquedaPorParametro;
     private javax.swing.JButton BotonMedico;
     private javax.swing.JButton BotonPacientes;

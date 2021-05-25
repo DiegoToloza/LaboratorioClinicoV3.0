@@ -80,10 +80,11 @@
                               <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                   <Component id="BotonMedico" max="32767" attributes="0"/>
-                                  <Component id="BotonPacientes" pref="125" max="32767" attributes="0"/>
+                                  <Component id="BotonPacientes" max="32767" attributes="0"/>
                                   <Component id="BotonSalir" max="32767" attributes="0"/>
                                   <Component id="BotonReporte" alignment="1" max="32767" attributes="0"/>
-                                  <Component id="BotonBusquedaPorParametro" alignment="1" pref="125" max="32767" attributes="0"/>
+                                  <Component id="BotonBusquedaPorParametro" alignment="1" max="32767" attributes="0"/>
+                                  <Component id="BotonBusquedaPorMuestra" alignment="1" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -104,6 +105,8 @@
                       <Component id="BotonPacientes" min="-2" pref="30" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="BotonBusquedaPorParametro" min="-2" pref="30" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="BotonBusquedaPorMuestra" min="-2" pref="30" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
                       <Component id="BotonReporte" min="-2" pref="30" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -172,6 +175,14 @@
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BotonBusquedaPorParametroActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JButton" name="BotonBusquedaPorMuestra">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Busqueda Muestra"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BotonBusquedaPorMuestraActionPerformed"/>
               </Events>
             </Component>
           </SubComponents>
