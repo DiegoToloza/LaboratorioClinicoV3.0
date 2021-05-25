@@ -1,6 +1,7 @@
 package jdbc;
 
 import domain.Medico;
+import domain.Persona;
 import java.sql.*;
 import java.util.*;
 
@@ -90,12 +91,12 @@ public class JdbcMedico {
         }
     }
 
-    public List<Medico> select() throws SQLException {
+    public List<Persona> select() throws SQLException {
         Connection conn = null;
         PreparedStatement ps = null;
         ResultSet rs = null;
 
-        List<Medico> listaMedicos = new ArrayList<>();
+        List<Persona> listaMedicos = new ArrayList<>();
 
         try {
             conn = this.userConn != null ? this.userConn : Conexion.getConnection();

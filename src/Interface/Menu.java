@@ -2,6 +2,7 @@ package Interface;
 
 import Interface.PMedico.Medico;
 import Interface.PPaciente.Paciente;
+import Interface.PBusqueda.*;
 import domain.*;
 import java.io.*;
 import java.sql.SQLException;
@@ -35,6 +36,7 @@ public class Menu extends javax.swing.JFrame {
         BotonSalir = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         BotonReporte = new javax.swing.JButton();
+        BotonBusquedaPorParametro = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -77,6 +79,13 @@ public class Menu extends javax.swing.JFrame {
             }
         });
 
+        BotonBusquedaPorParametro.setText("Hemoglobina par");
+        BotonBusquedaPorParametro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotonBusquedaPorParametroActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -92,26 +101,29 @@ public class Menu extends javax.swing.JFrame {
                             .addComponent(BotonMedico, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(BotonPacientes, javax.swing.GroupLayout.DEFAULT_SIZE, 125, Short.MAX_VALUE)
                             .addComponent(BotonSalir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(BotonReporte, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(BotonReporte, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(BotonBusquedaPorParametro, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 125, Short.MAX_VALUE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 595, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0))
         );
         jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(65, 65, 65)
                 .addComponent(BotonMedico, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(33, 33, 33)
+                .addGap(18, 18, 18)
                 .addComponent(BotonPacientes, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(BotonBusquedaPorParametro, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(BotonReporte, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(BotonSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(45, 45, 45))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+            .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 600, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -170,14 +182,14 @@ public class Menu extends javax.swing.JFrame {
         File reporte = new File("Reporte.txt");
         PrintWriter salida;
         try {
-            List<domain.Medico> listaMedicos = new JdbcMedico().select();
+            List<Persona> listaMedicos = new JdbcMedico().select();
             salida = new PrintWriter(reporte);
             salida.println("    Reporte de datos.\n\n");
-            for (domain.Medico medico : listaMedicos) {
+            for (Persona medico : listaMedicos) {
                 salida.println("     Médico:\n");
                 salida.println("     " + medico.toString() + "\n");
                 salida.println("     Paciente(s) del Médico:\n");
-                Map<Integer, domain.Paciente> mapaPaciente = new JdbcPaciente().selectMedico(medico.getIdMedico());
+                Map<Integer, domain.Paciente> mapaPaciente = new JdbcPaciente().selectMedico(((domain.Medico)medico).getIdMedico());
                 for (domain.Paciente paciente : mapaPaciente.values()) {
                     salida.println("        " + paciente.toString());
                     Orina orina = new JdbcOrina().select(paciente.getIdPaciente());
@@ -206,6 +218,15 @@ public class Menu extends javax.swing.JFrame {
             ex.printStackTrace(System.out);
         }
     }//GEN-LAST:event_BotonReporteActionPerformed
+
+    private void BotonBusquedaPorParametroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonBusquedaPorParametroActionPerformed
+        try {
+            BusquedaParametroPaciente hola = new BusquedaParametroPaciente();
+            cargarPanel(hola);
+        } catch (SQLException ex) {
+            ex.printStackTrace(System.out);
+        }
+    }//GEN-LAST:event_BotonBusquedaPorParametroActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -240,6 +261,7 @@ public class Menu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BotonBusquedaPorParametro;
     private javax.swing.JButton BotonMedico;
     private javax.swing.JButton BotonPacientes;
     private javax.swing.JButton BotonReporte;

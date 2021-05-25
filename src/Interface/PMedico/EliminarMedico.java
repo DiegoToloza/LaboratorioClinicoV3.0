@@ -1,5 +1,6 @@
 package Interface.PMedico;
 
+import domain.Persona;
 import java.sql.SQLException;
 import java.util.*;
 import java.util.logging.Level;
@@ -15,7 +16,7 @@ public class EliminarMedico extends javax.swing.JPanel {
         initComponents();
         manejo.setSize(330, 230);
         try {
-            List<domain.Medico> listaMedicos = new JdbcMedico().select();
+            List<Persona> listaMedicos = new JdbcMedico().select();
             ItemsComboMedicos(listaMedicos);
         } catch (SQLException ex) {
             Logger.getLogger(EliminarMedico.class.getName()).log(Level.SEVERE, null, ex);
@@ -113,8 +114,8 @@ public class EliminarMedico extends javax.swing.JPanel {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         int eliminar = comboBoxMedicos.getSelectedIndex();
         try {
-            List<domain.Medico> listaMedicos = new JdbcMedico().select();
-            domain.Medico medico = listaMedicos.get(eliminar);
+            List<Persona> listaMedicos = new JdbcMedico().select();
+            domain.Medico medico = (domain.Medico)listaMedicos.get(eliminar);
             new JdbcMedico().delete(medico);
             manejo.setVisible(false);
         } catch (SQLException ex) {
@@ -127,7 +128,7 @@ public class EliminarMedico extends javax.swing.JPanel {
         manejo.setVisible(false);
     }//GEN-LAST:event_jButton1ActionPerformed
     
-    private void ItemsComboMedicos(List<domain.Medico> medicos){
+    private void ItemsComboMedicos(List<domain.Persona> medicos){
         comboBoxMedicos.removeAllItems();
 
         if(medicos.isEmpty()){

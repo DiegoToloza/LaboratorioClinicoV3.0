@@ -1,6 +1,7 @@
 package Interface.PPaciente;
 
 import domain.Medico;
+import domain.Persona;
 import java.sql.SQLException;
 import java.util.*;
 import java.util.logging.Level;
@@ -17,7 +18,7 @@ public class CambiarDeMedico extends javax.swing.JPanel {
         initComponents();
         manejo.setSize(330, 230);
         try {
-            List<domain.Medico> listaMedicos = new JdbcMedico().select();
+            List<Persona> listaMedicos = new JdbcMedico().select();
             ItemsComboMedicos(listaMedicos);
         } catch (SQLException ex) {
             Logger.getLogger(CambiarDeMedico.class.getName()).log(Level.SEVERE, null, ex);
@@ -114,9 +115,9 @@ public class CambiarDeMedico extends javax.swing.JPanel {
 
     private void BotonCambiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonCambiarActionPerformed
         try {
-            List<domain.Medico> listaMedicos = new JdbcMedico().select();
+            List<Persona> listaMedicos = new JdbcMedico().select();
             int opcion = comboBoxMedicos.getSelectedIndex();
-            manejo.paciente.setIdMedico(listaMedicos.get(opcion).getIdMedico());
+            manejo.paciente.setIdMedico(((domain.Medico)listaMedicos.get(opcion)).getIdMedico());
             JdbcPaciente SQLPaciente = new JdbcPaciente();
             SQLPaciente.update(manejo.paciente);
             manejo.setVisible(false);
@@ -130,7 +131,7 @@ public class CambiarDeMedico extends javax.swing.JPanel {
         manejo.setVisible(false);
     }//GEN-LAST:event_BotonAtrasActionPerformed
     
-    private void ItemsComboMedicos(List<Medico> medicos){
+    private void ItemsComboMedicos(List<Persona> medicos){
         comboBoxMedicos.removeAllItems();
 
         if(medicos.isEmpty()){

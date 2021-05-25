@@ -1,5 +1,6 @@
 package Interface.PMedico;
 
+import domain.Persona;
 import java.sql.SQLException;
 import java.util.*;
 import jdbc.*;
@@ -12,13 +13,13 @@ public class Medico extends javax.swing.JPanel {
     }
 
     private void cargarMedico() throws SQLException {
-        List<domain.Medico> listaMedicos = new JdbcMedico().select();
+        List<Persona> listaMedicos = new JdbcMedico().select();
         String matriz[][] = new String[listaMedicos.size()][4];
         for (int i = 0; i < listaMedicos.size(); i++) {
             matriz[i][0] = listaMedicos.get(i).getNombre();
-            matriz[i][1] = listaMedicos.get(i).getEspecializacion();
-            matriz[i][2] = listaMedicos.get(i).getCorreoElectronico();
-            matriz[i][3] = listaMedicos.get(i).getTelefono();
+            matriz[i][1] = ((domain.Medico)listaMedicos.get(i)).getEspecializacion();
+            matriz[i][2] = ((domain.Medico)listaMedicos.get(i)).getCorreoElectronico();
+            matriz[i][3] = ((domain.Medico)listaMedicos.get(i)).getTelefono();
         }
         tablaMedicos.setModel(new javax.swing.table.DefaultTableModel(
                 matriz, new String[]{
@@ -158,8 +159,8 @@ public class Medico extends javax.swing.JPanel {
     private void tablaMedicosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaMedicosMouseClicked
         try {
             int tabla = tablaMedicos.getSelectedRow();
-            List<domain.Medico> listaMedicos = new JdbcMedico().select();
-            domain.Medico medico = listaMedicos.get(tabla);
+            List<Persona> listaMedicos = new JdbcMedico().select();
+            domain.Medico medico = (domain.Medico)listaMedicos.get(tabla);
             DialogMedico panel = new DialogMedico(new javax.swing.JFrame(), true, 3, medico);
             panel.setLocationRelativeTo(this);
             panel.setVisible(true);
