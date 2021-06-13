@@ -224,7 +224,10 @@ public class Menu extends javax.swing.JFrame {
                     salida.println("");
                 }
             }
+            // Lo que se hace es basicamente revisar cada uno de los mapas por orden para poder generear un reporte con un formato designado
             salida.close();
+            AvisorReporte hola = new AvisorReporte();
+            cargarPanel(hola);
         } catch (FileNotFoundException | SQLException ex) {
             ex.printStackTrace(System.out);
         }

@@ -19,20 +19,20 @@
             Sangre{hemogoblina = 3423.0, reticulocitos = 31254.0, neutrofilos = 546, plaquetas = 56433, idPaciente = 12}
 
 
-        Paciente{idPaciente = 13, telefono = +569 74839834, correoElectronico = No disponePersona{nombre = Eulogio Fernandez, edad = 79, genero = Masculino, nacionalidad = Chileno}}
-
-            Muestra orina:
-            Orina{glucosa = 1.0, densidad = 1.0, pH = 1, sodio = 1, idPaciente = 13}
-
-            Muestra sangre:
-            Sangre{hemogoblina = 1.0, reticulocitos = 1.0, neutrofilos = 1, plaquetas = 1, idPaciente = 13}
-
-
      Médico:
 
      Medico{idMedico = 7, especializacion = Medicina General, telefono = +569 39485738, correoElectronico = karla.melo.p@mail.comPersona{nombre = Karla Melo, edad = 35, genero = Femenino, nacionalidad = Chilena}}
 
      Paciente(s) del Médico:
+
+        Paciente{idPaciente = 13, telefono = +569 74839834, correoElectronico = No disponePersona{nombre = Eulogio Fernandez, edad = 79, genero = Masculino, nacionalidad = Chileno}}
+
+            Muestra orina:
+            Orina{glucosa = 435.66, densidad = 436.1, pH = 7, sodio = 5534, idPaciente = 13}
+
+            Muestra sangre:
+            Sangre{hemogoblina = 123.4, reticulocitos = 543.6, neutrofilos = 6351, plaquetas = 845, idPaciente = 13}
+
 
         Paciente{idPaciente = 14, telefono = +569 78480982, correoElectronico = odiominombre@mail.comPersona{nombre = Abelardo Sanchez, edad = 46, genero = Masculino, nacionalidad = Mexicano}}
 
@@ -52,9 +52,6 @@
         Paciente{idPaciente = 16, telefono = +569 74839287, correoElectronico = j.fenix99@mail.comPersona{nombre = Joaquin Fenix, edad = 36, genero = Masculino, nacionalidad = Colombiano}}
 
         Paciente{idPaciente = 15, telefono = +569 74839837, correoElectronico = beatriz.ponce.c@mail.comPersona{nombre = Beatriz Ponce, edad = 21, genero = Femenino, nacionalidad = Chilena}}
-
-            Muestra orina:
-            Orina{glucosa = 0.3, densidad = 32.0, pH = 4, sodio = 523, idPaciente = 15}
 
      Médico:
 

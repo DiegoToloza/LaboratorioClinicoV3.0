@@ -28,6 +28,7 @@ public class DialogMedico extends javax.swing.JDialog {
                 cargarPanel(panel);
             }
         }
+        // Dialog utilizado para cambiar de panel en cada una de las opciones, en este caso las ventanas graficas correspondientes a Medico
     }
 
     @SuppressWarnings("unchecked")

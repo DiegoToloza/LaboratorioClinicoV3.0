@@ -15,6 +15,7 @@ public class Medico extends javax.swing.JPanel {
     private void cargarMedico() throws SQLException {
         List<Persona> listaMedicos = new JdbcMedico().select();
         String matriz[][] = new String[listaMedicos.size()][4];
+        // Se genera una matriz la cual es entregada a la tabla para que este muestre el listado completo de medicos
         for (int i = 0; i < listaMedicos.size(); i++) {
             matriz[i][0] = listaMedicos.get(i).getNombre();
             matriz[i][1] = ((domain.Medico)listaMedicos.get(i)).getEspecializacion();

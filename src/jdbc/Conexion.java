@@ -22,4 +22,6 @@ public class Conexion {
     public static void close(Connection conn) throws SQLException{
         conn.close();
     }
+    
+    // Clase creada para generar un enlace hacia la base de datos de MySQL
 }

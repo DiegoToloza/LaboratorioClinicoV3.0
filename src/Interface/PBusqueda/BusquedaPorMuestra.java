@@ -1,4 +1,4 @@
-package Interface.PBusqueda;
+ package Interface.PBusqueda;
 
 import Interface.PPaciente.*;
 import java.sql.SQLException;

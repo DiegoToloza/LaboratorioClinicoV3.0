@@ -59,6 +59,7 @@ public class DialogPaciente extends javax.swing.JDialog {
                 cargarPanel(panel);
             }
         }
+        // Dialog utilizado para generar cambios de paneles con los diferentes de estos que respectan a los pacientes
     }
 
     @SuppressWarnings("unchecked")

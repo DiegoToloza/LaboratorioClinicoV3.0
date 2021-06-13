@@ -272,6 +272,8 @@ public class SeleccionMedicos extends javax.swing.JPanel {
             matriz[cont][4] = paciente.getTelefono();
             cont++;
         }
+//        Se genera una matriz la cual se rellena con ciertos datos de pacientes los cuales se encuentran en el mapa del respectivo medico
+//        para luego mostrarlo por pantalla
         tablaPacientes.setModel(new javax.swing.table.DefaultTableModel(
         matriz, new String[]{
             "Nombre", "Edad","Género", "Email", "Teléfono"
