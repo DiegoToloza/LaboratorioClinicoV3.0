@@ -75,6 +75,46 @@ public class Medico extends Persona {
         sb.append('}');
         return sb.toString();
     }
+
+    @Override
+    public String getNombre() {
+        return this.nombre;
+    }
+
+    @Override
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    @Override
+    public int getEdad() {
+        return this.edad;
+    }
+
+    @Override
+    public void setEdad(int edad) {
+        this.edad = edad;
+    }
+
+    @Override
+    public String getGenero() {
+        return this.genero;
+    }
+
+    @Override
+    public void setGenero(String genero) {
+        this.genero = genero;
+    }
+
+    @Override
+    public String getNacionalidad() {
+        return this.nacionalidad;
+    }
+
+    @Override
+    public void setNacionalidad(String nacionalidad) {
+        this.nacionalidad = nacionalidad;
+    }
     
     
     

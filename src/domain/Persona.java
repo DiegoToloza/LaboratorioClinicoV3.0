@@ -1,10 +1,10 @@
 package domain;
 
 public abstract class Persona {
-    private String nombre;
-    private int edad;
-    private String genero;
-    private String nacionalidad;
+    protected String nombre;
+    protected int edad;
+    protected String genero;
+    protected String nacionalidad;
     
     public Persona(){
     }
@@ -16,37 +16,21 @@ public abstract class Persona {
         this.nacionalidad = nacionalidad;
     }
 
-    public String getNombre() {
-        return this.nombre;
-    }
+    public abstract String getNombre();
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
+    public abstract void setNombre(String nombre);
 
-    public int getEdad() {
-        return this.edad;
-    }
+    public abstract int getEdad();
 
-    public void setEdad(int edad) {
-        this.edad = edad;
-    }
+    public abstract void setEdad(int edad);
 
-    public String getGenero() {
-        return this.genero;
-    }
+    public abstract String getGenero();
 
-    public void setGenero(String genero) {
-        this.genero = genero;
-    }
+    public abstract void setGenero(String genero);
 
-    public String getNacionalidad() {
-        return this.nacionalidad;
-    }
+    public abstract String getNacionalidad();
 
-    public void setNacionalidad(String nacionalidad) {
-        this.nacionalidad = nacionalidad;
-    }
+    public abstract void setNacionalidad(String nacionalidad);
 
     @Override
     public String toString() {

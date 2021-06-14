@@ -24,29 +24,35 @@ public class BusquedaPorMuestra extends javax.swing.JPanel {
     }
 
     private void cargarPaciente() throws SQLException {
+        double prueba = 99999999;
+        int id = 0;
         filtrado.removeAll(filtrado);
         List<domain.Paciente> listaPaciente = new JdbcPaciente().select();
         for (int i = 0; i < listaPaciente.size(); i++) {
             if (ComboBoxMuestra.getSelectedIndex() == 0) {
                 JdbcSangre msangre = new JdbcSangre();
                 domain.Sangre sangre = msangre.select(listaPaciente.get(i).getIdPaciente());
-                if(sangre != null){
-                    filtrado.add(listaPaciente.get(i));
+                if(sangre != null && sangre.getHemogoblina() <= prueba){
+                    prueba = sangre.getHemogoblina();
+                    id = i;
                 }
             }else if (ComboBoxMuestra.getSelectedIndex() == 1) {
                 JdbcSemen msemen = new JdbcSemen();
                 domain.Semen semen = msemen.select(listaPaciente.get(i).getIdPaciente());
-                if(semen != null){
-                    filtrado.add(listaPaciente.get(i));
+                if(semen != null && semen.getVolumen() <= prueba){
+                    prueba = semen.getVolumen();
+                    id = i;
                 }
             }else if (ComboBoxMuestra.getSelectedIndex() == 2) {
                 JdbcOrina morina = new JdbcOrina();
                 domain.Orina orina = morina.select(listaPaciente.get(i).getIdPaciente());
-                if(orina != null){
-                    filtrado.add(listaPaciente.get(i));
+                if(orina != null && orina.getGlucosa() <= prueba){
+                    prueba = orina.getGlucosa();
+                    id = i;
                 }
             }  
         }
+        filtrado.add(listaPaciente.get(id));
         String matriz[][] = new String[filtrado.size()][5];
         for (int i = 0; i < filtrado.size(); i++) {
             matriz[i][0] = filtrado.get(i).getNombre();
@@ -105,10 +111,10 @@ public class BusquedaPorMuestra extends javax.swing.JPanel {
         jLabel1.setFont(new java.awt.Font("Dialog", 0, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Pacientes Encontrados");
+        jLabel1.setText("Paciente Encontrado");
 
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel2.setText("Buscar Pacientes que dispongan de una muestra de:");
+        jLabel2.setText("Paciente con el menor primer valor del examen elegido:");
 
         botonBuscar.setText("Buscar");
         botonBuscar.addActionListener(new java.awt.event.ActionListener() {
@@ -126,11 +132,11 @@ public class BusquedaPorMuestra extends javax.swing.JPanel {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                        .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(ComboBoxMuestra, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(18, 18, 18)
                         .addComponent(botonBuscar))
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 542, Short.MAX_VALUE)
                     .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
