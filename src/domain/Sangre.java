@@ -1,5 +1,7 @@
 package domain;
 
+import excepciones.PorRangoException;
+
 public class Sangre implements IMuestraGenerica {
 
     private double hemogoblina;
@@ -13,10 +15,10 @@ public class Sangre implements IMuestraGenerica {
     }
 
     public Sangre(double hemogoblina, double reticulocitos, int neutrofilos, int plaquetas, int idPaciente) {
-        this.hemogoblina = hemogoblina;
-        this.reticulocitos = reticulocitos;
-        this.neutrofilos = neutrofilos;
-        this.plaquetas = plaquetas;
+        setHemogoblina(hemogoblina);
+        setReticulocitos(reticulocitos);
+        setNeutrofilos(neutrofilos);
+        setPlaquetas(plaquetas);
         this.idPaciente = idPaciente;
     }
 
@@ -25,6 +27,9 @@ public class Sangre implements IMuestraGenerica {
     }
 
     public void setHemogoblina(double hemogoblina) {
+        if(hemogoblina < 0){
+            throw new PorRangoException();
+        }
         this.hemogoblina = hemogoblina;
     }
 
@@ -32,7 +37,10 @@ public class Sangre implements IMuestraGenerica {
         return this.reticulocitos;
     }
 
-    public void setReticulocitos(double reticulocitos) {
+    public void setReticulocitos(double reticulocitos){
+        if (reticulocitos < 0 || reticulocitos > 100){
+            throw new PorRangoException();
+        }
         this.reticulocitos = reticulocitos;
     }
 
@@ -41,10 +49,16 @@ public class Sangre implements IMuestraGenerica {
     }
 
     public void setNeutrofilos(int neutrofilos) {
+        if(neutrofilos < 0 || neutrofilos > 100){
+            throw new PorRangoException();
+        }
         this.neutrofilos = neutrofilos;
     }
 
     public void setNeutrofilos(double neutrofilos) {
+        if(neutrofilos < 0 || neutrofilos > 100){
+            throw new PorRangoException();
+        }
         this.neutrofilos = (int) neutrofilos;
     }
 
@@ -53,10 +67,16 @@ public class Sangre implements IMuestraGenerica {
     }
 
     public void setPlaquetas(int plaquetas) {
+        if(plaquetas < 0){
+            throw new PorRangoException();
+        }
         this.plaquetas = plaquetas;
     }
 
     public void setPlaquetas(double plaquetas) {
+        if(plaquetas < 0){
+            throw new PorRangoException();
+        }
         this.plaquetas = (int) plaquetas;
     }
 

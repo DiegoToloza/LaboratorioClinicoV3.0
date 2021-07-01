@@ -135,7 +135,7 @@ public class AgregarMuestraOrina extends javax.swing.JPanel {
     private void botonAgregarPacienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAgregarPacienteActionPerformed
         try {
             domain.Orina orina = new domain.Orina();
-            orina.setIdPaciente(manejo.paciente.getIdPaciente());
+            orina.setIdPaciente(manejo.paciente.getId());
             orina.setGlucosa(Double.parseDouble(glucosa.getText()));
             orina.setDensidad(Double.parseDouble(densidad.getText()));
             orina.setpH(Integer.parseInt(ph.getText()));

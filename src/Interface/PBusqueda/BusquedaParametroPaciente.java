@@ -28,7 +28,7 @@ public class BusquedaParametroPaciente extends javax.swing.JPanel {
         List<domain.Paciente> listaPaciente = new JdbcPaciente().select();
         JdbcSangre muestra = new JdbcSangre();
         for (int i = 0; i < listaPaciente.size(); i++) {
-            domain.Sangre msangre = muestra.select(listaPaciente.get(i).getIdPaciente());
+            domain.Sangre msangre = muestra.select(listaPaciente.get(i).getId());
             if (msangre != null && !(ValorHemo.getText().isEmpty())) {
                 if (msangre.getHemogoblina() <= Double.parseDouble(ValorHemo.getText())) {
                     filtrado.add(listaPaciente.get(i));

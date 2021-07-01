@@ -31,21 +31,21 @@ public class BusquedaPorMuestra extends javax.swing.JPanel {
         for (int i = 0; i < listaPaciente.size(); i++) {
             if (ComboBoxMuestra.getSelectedIndex() == 0) {
                 JdbcSangre msangre = new JdbcSangre();
-                domain.Sangre sangre = msangre.select(listaPaciente.get(i).getIdPaciente());
+                domain.Sangre sangre = msangre.select(listaPaciente.get(i).getId());
                 if(sangre != null && sangre.getHemogoblina() <= prueba){
                     prueba = sangre.getHemogoblina();
                     id = i;
                 }
             }else if (ComboBoxMuestra.getSelectedIndex() == 1) {
                 JdbcSemen msemen = new JdbcSemen();
-                domain.Semen semen = msemen.select(listaPaciente.get(i).getIdPaciente());
+                domain.Semen semen = msemen.select(listaPaciente.get(i).getId());
                 if(semen != null && semen.getVolumen() <= prueba){
                     prueba = semen.getVolumen();
                     id = i;
                 }
             }else if (ComboBoxMuestra.getSelectedIndex() == 2) {
                 JdbcOrina morina = new JdbcOrina();
-                domain.Orina orina = morina.select(listaPaciente.get(i).getIdPaciente());
+                domain.Orina orina = morina.select(listaPaciente.get(i).getId());
                 if(orina != null && orina.getGlucosa() <= prueba){
                     prueba = orina.getGlucosa();
                     id = i;

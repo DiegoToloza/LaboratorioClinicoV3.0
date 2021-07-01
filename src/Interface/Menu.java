@@ -200,12 +200,12 @@ public class Menu extends javax.swing.JFrame {
                 salida.println("     Médico:\n");
                 salida.println("     " + medico.toString() + "\n");
                 salida.println("     Paciente(s) del Médico:\n");
-                Map<Integer, domain.Paciente> mapaPaciente = new JdbcPaciente().selectMedico(((domain.Medico)medico).getIdMedico());
+                Map<Integer, domain.Paciente> mapaPaciente = new JdbcPaciente().selectMedico(((domain.Medico)medico).getId());
                 for (domain.Paciente paciente : mapaPaciente.values()) {
                     salida.println("        " + paciente.toString());
-                    Orina orina = new JdbcOrina().select(paciente.getIdPaciente());
-                    Sangre sangre = new JdbcSangre().select(paciente.getIdPaciente());
-                    Semen semen = new JdbcSemen().select(paciente.getIdPaciente());
+                    Orina orina = new JdbcOrina().select(paciente.getId());
+                    Sangre sangre = new JdbcSangre().select(paciente.getId());
+                    Semen semen = new JdbcSemen().select(paciente.getId());
                     if(orina != null){
                         salida.println("");
                         salida.println("            Muestra orina:");

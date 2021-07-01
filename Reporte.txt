@@ -3,113 +3,25 @@
 
      Médico:
 
-     Medico{idMedico = 6, especializacion = Gastrointerologo, telefono = +569 32495439, correoElectronico = j.segura@mail.comPersona{nombre = Juan Segura, edad = 45, genero = Masculino, nacionalidad = Venezolano}}
+     Medico{idMedico = 2, especializacion = vaginologo, telefono = 12345678, correoElectronico = sebaweco@mail.comPersona{nombre = Seba, edad = 25, genero = indeterminado, nacionalidad = peruano}}
 
      Paciente(s) del Médico:
-
-        Paciente{idPaciente = 11, telefono = +569 74328843, correoElectronico = max.eltorrico@mail.comPersona{nombre = Max Torrico, edad = 23, genero = Maxculino, nacionalidad = Chilena}}
-
-            Muestra sangre:
-            Sangre{hemogoblina = 125.0, reticulocitos = 769.0, neutrofilos = 2930, plaquetas = 83921, idPaciente = 11}
-
-
-        Paciente{idPaciente = 12, telefono = +569 78493783, correoElectronico = f.valenzuela.j@mail.comPersona{nombre = Francisca Valenzuela, edad = 16, genero = Femenino, nacionalidad = Chilena}}
-
-            Muestra sangre:
-            Sangre{hemogoblina = 3423.0, reticulocitos = 31254.0, neutrofilos = 546, plaquetas = 56433, idPaciente = 12}
-
 
      Médico:
 
-     Medico{idMedico = 7, especializacion = Medicina General, telefono = +569 39485738, correoElectronico = karla.melo.p@mail.comPersona{nombre = Karla Melo, edad = 35, genero = Femenino, nacionalidad = Chilena}}
+     Medico{idMedico = 3, especializacion = comergatos, telefono = 1213653, correoElectronico = rafa@weco.clPersona{nombre = rafa, edad = 20, genero = no binario, nacionalidad = haitiano}}
 
      Paciente(s) del Médico:
 
-        Paciente{idPaciente = 13, telefono = +569 74839834, correoElectronico = No disponePersona{nombre = Eulogio Fernandez, edad = 79, genero = Masculino, nacionalidad = Chileno}}
+        Paciente{idPaciente = 5, telefono = +56975859545, correoElectronico = prueba@mail.clPersona{nombre = prueba, edad = 26, genero = Femenino, nacionalidad = Chilena}}
 
             Muestra orina:
-            Orina{glucosa = 435.66, densidad = 436.1, pH = 7, sodio = 5534, idPaciente = 13}
+            Orina{glucosa = 12.0, densidad = 12.0, pH = 12, sodio = 12, idPaciente = 5}
 
             Muestra sangre:
-            Sangre{hemogoblina = 123.4, reticulocitos = 543.6, neutrofilos = 6351, plaquetas = 845, idPaciente = 13}
+            Sangre{hemogoblina = 12.0, reticulocitos = 12.0, neutrofilos = 12, plaquetas = 12, idPaciente = 5}
 
-
-        Paciente{idPaciente = 14, telefono = +569 78480982, correoElectronico = odiominombre@mail.comPersona{nombre = Abelardo Sanchez, edad = 46, genero = Masculino, nacionalidad = Mexicano}}
-
-            Muestra orina:
-            Orina{glucosa = 426.432, densidad = 4243.64, pH = 5, sodio = 12445, idPaciente = 14}
-
-            Muestra sangre:
-            Sangre{hemogoblina = 4346.7, reticulocitos = 5346.5, neutrofilos = 234, plaquetas = 663, idPaciente = 14}
-
-
-     Médico:
-
-     Medico{idMedico = 8, especializacion = Kinesiologo, telefono = +569 38495738, correoElectronico = francisco.s123@mail.comPersona{nombre = Francisco Soto, edad = 39, genero = Masculino, nacionalidad = Chileno}}
-
-     Paciente(s) del Médico:
-
-        Paciente{idPaciente = 16, telefono = +569 74839287, correoElectronico = j.fenix99@mail.comPersona{nombre = Joaquin Fenix, edad = 36, genero = Masculino, nacionalidad = Colombiano}}
-
-        Paciente{idPaciente = 15, telefono = +569 74839837, correoElectronico = beatriz.ponce.c@mail.comPersona{nombre = Beatriz Ponce, edad = 21, genero = Femenino, nacionalidad = Chilena}}
-
-     Médico:
-
-     Medico{idMedico = 9, especializacion = Neurocirujano, telefono = +569 87492343, correoElectronico = p.fuentes.arriaga@mail.comPersona{nombre = Pedro Fuentes, edad = 57, genero = Masculino, nacionalidad = Chileno}}
-
-     Paciente(s) del Médico:
-
-        Paciente{idPaciente = 17, telefono = +569 76489237, correoElectronico = r.g.33@mail.comPersona{nombre = Ricardo Gomez, edad = 49, genero = Masculino, nacionalidad = Ecuatoriano}}
-
-            Muestra sangre:
-            Sangre{hemogoblina = 3214.43, reticulocitos = 345.4, neutrofilos = 432, plaquetas = 764, idPaciente = 17}
-
-
-        Paciente{idPaciente = 18, telefono = +569 89493092, correoElectronico = No disponePersona{nombre = Juanita Del Barrio, edad = 59, genero = Femenino, nacionalidad = Chilena}}
-
-            Muestra sangre:
-            Sangre{hemogoblina = 321.45, reticulocitos = 656.5, neutrofilos = 754, plaquetas = 312, idPaciente = 18}
-
-
-     Médico:
-
-     Medico{idMedico = 10, especializacion = Geriatra, telefono = +51 78439283, correoElectronico = mamani.quispe.t@mail.comPersona{nombre = Mamani Quispe, edad = 42, genero = Masculino, nacionalidad = Peruano}}
-
-     Paciente(s) del Médico:
-
-     Médico:
-
-     Medico{idMedico = 11, especializacion = Nefrologa, telefono = +569 78534984, correoElectronico = filomena.dc@mail.comPersona{nombre = Filomena Del Campo, edad = 36, genero = Femenina, nacionalidad = Argentina}}
-
-     Paciente(s) del Médico:
-
-     Médico:
-
-     Medico{idMedico = 12, especializacion = Urologo, telefono = +569 84892738, correoElectronico = diego.toloza@mail.comPersona{nombre = Diego Toloza, edad = 37, genero = Masculino, nacionalidad = Peruano}}
-
-     Paciente(s) del Médico:
-
-        Paciente{idPaciente = 19, telefono = +569 89093829, correoElectronico = rafael.c@mail.comPersona{nombre = Rafael Carvacho, edad = 21, genero = Masculino, nacionalidad = Chileno}}
-
-            Muestra orina:
-            Orina{glucosa = 443.5, densidad = 643.3, pH = 14, sodio = 423, idPaciente = 19}
             Muestra semen:
-            Semen{volumen = 321.0, concentracion = 45.0, globulosBlancos = 234.0, vitalidad = 98, idPaciente = 19}
-
-
-        Paciente{idPaciente = 20, telefono = +569 98302812, correoElectronico = max.beltran.23@mail.comPersona{nombre = Maximiliano Beltran, edad = 24, genero = Masculino, nacionalidad = Chileno}}
-
-            Muestra orina:
-            Orina{glucosa = 3124.0, densidad = 2346.0, pH = 0, sodio = 3141, idPaciente = 20}
-            Muestra semen:
-            Semen{volumen = 31.5, concentracion = 424.5, globulosBlancos = 2345.33, vitalidad = 10, idPaciente = 20}
-
-
-        Paciente{idPaciente = 21, telefono = +569 57286326, correoElectronico = sebastian.m@mail.comPersona{nombre = Sebastian Muñoz, edad = 21, genero = Masculino, nacionalidad = Chileno}}
-
-            Muestra orina:
-            Orina{glucosa = 423.5, densidad = 534.6, pH = 7, sodio = 4231, idPaciente = 21}
-            Muestra semen:
-            Semen{volumen = 324.53, concentracion = 352.34, globulosBlancos = 654.1, vitalidad = 100, idPaciente = 21}
+            Semen{volumen = 12.0, concentracion = 12.0, globulosBlancos = 12.0, vitalidad = 12, idPaciente = 5}
 
 

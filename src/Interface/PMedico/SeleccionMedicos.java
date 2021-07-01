@@ -249,7 +249,7 @@ public class SeleccionMedicos extends javax.swing.JPanel {
             panel.setLocationRelativeTo(this);
             panel.setVisible(true);
             JdbcMedico jm = new JdbcMedico();
-            medico = jm.select(medico.getIdMedico());
+            medico = jm.select(medico.getId());
             SeleccionMedicos sm = new SeleccionMedicos(manejo,medico);
             manejo.cargarPanel(sm);
         } catch (SQLException ex) {
@@ -262,7 +262,7 @@ public class SeleccionMedicos extends javax.swing.JPanel {
 
     private void cargarPaciente() throws SQLException{
         int cont = 0;
-        Map<Integer,domain.Paciente> mapaPaciente = new JdbcPaciente().selectMedico(medico.getIdMedico());
+        Map<Integer,domain.Paciente> mapaPaciente = new JdbcPaciente().selectMedico(medico.getId());
         String matriz[][] = new String[mapaPaciente.values().size()][5];
         for (domain.Paciente paciente : mapaPaciente.values()) {
             matriz[cont][0] = paciente.getNombre();

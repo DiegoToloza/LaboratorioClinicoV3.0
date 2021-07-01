@@ -1,5 +1,7 @@
 package domain;
 
+import excepciones.PorRangoException;
+
 public class Orina implements IMuestraGenerica {
 
     private double glucosa;
@@ -13,10 +15,10 @@ public class Orina implements IMuestraGenerica {
     }
 
     public Orina(double glucosa, double densidad, int pH, int sodio, int idPaciente) {
-        this.glucosa = glucosa;
-        this.densidad = densidad;
-        this.pH = pH;
-        this.sodio = sodio;
+        setGlucosa(glucosa);
+        setDensidad(densidad);
+        setpH(pH);
+        setSodio(sodio);
         this.idPaciente = idPaciente;
     }
 
@@ -25,6 +27,9 @@ public class Orina implements IMuestraGenerica {
     }
 
     public void setGlucosa(double glucosa) {
+        if(glucosa < 0){
+            throw new PorRangoException();
+        }
         this.glucosa = glucosa;
     }
 
@@ -33,6 +38,9 @@ public class Orina implements IMuestraGenerica {
     }
 
     public void setDensidad(double densidad) {
+        if(densidad < 0){
+            throw new PorRangoException();
+        }
         this.densidad = densidad;
     }
 
@@ -41,6 +49,9 @@ public class Orina implements IMuestraGenerica {
     }
 
     public void setpH(int pH) {
+        if(pH < 0 || pH > 14){
+            throw new PorRangoException();
+        }
         this.pH = pH;
     }
 
@@ -49,6 +60,9 @@ public class Orina implements IMuestraGenerica {
     }
 
     public void setSodio(int sodio) {
+        if(sodio < 0){
+            throw new PorRangoException();
+        }
         this.sodio = sodio;
     }
 

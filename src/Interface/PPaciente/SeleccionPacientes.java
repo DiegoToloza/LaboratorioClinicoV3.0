@@ -243,7 +243,7 @@ public class SeleccionPacientes extends javax.swing.JPanel {
             panel.setLocationRelativeTo(this);
             panel.setVisible(true);
             JdbcPaciente jp = new JdbcPaciente();
-            paciente = jp.select(paciente.getIdPaciente());
+            paciente = jp.select(paciente.getId());
             SeleccionPacientes sm = new SeleccionPacientes(manejo, paciente);
             manejo.cargarPanel(sm);
         } catch (SQLException ex) {

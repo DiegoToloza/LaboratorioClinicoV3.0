@@ -14,7 +14,7 @@ public class ModificarMuestraSemen extends javax.swing.JPanel {
         initComponents();
         manejo.setSize(363, 395);
         manejo.setLocationRelativeTo(null);
-        this.semen = new JdbcSemen().select(manejo.paciente.getIdPaciente());
+        this.semen = new JdbcSemen().select(manejo.paciente.getId());
     }
 
     @SuppressWarnings("unchecked")

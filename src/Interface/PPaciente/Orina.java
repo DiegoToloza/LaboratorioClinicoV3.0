@@ -11,7 +11,7 @@ public class Orina extends javax.swing.JPanel {
         this.sp = p;
         initComponents();
         JdbcOrina jo = new JdbcOrina();
-        domain.Orina or = jo.select(p.paciente.getIdPaciente());
+        domain.Orina or = jo.select(p.paciente.getId());
         if (or != null) {
             textGlucosa.setText("" + or.getGlucosa());
             textDensidad.setText("" + or.getDensidad());
@@ -294,7 +294,7 @@ public class Orina extends javax.swing.JPanel {
 
     private void botonEliminarMuestraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEliminarMuestraActionPerformed
         try {
-            domain.Orina orina = new JdbcOrina().select(sp.paciente.getIdPaciente());
+            domain.Orina orina = new JdbcOrina().select(sp.paciente.getId());
             new JdbcOrina().delete(orina);
             Orina pipi = new Orina(sp);
             sp.cargarPanel(pipi);

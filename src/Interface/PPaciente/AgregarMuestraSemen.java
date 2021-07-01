@@ -135,7 +135,7 @@ public class AgregarMuestraSemen extends javax.swing.JPanel {
     private void botonAgregarPacienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAgregarPacienteActionPerformed
         try {
             domain.Semen semen = new domain.Semen();
-            semen.setIdPaciente(manejo.paciente.getIdPaciente());
+            semen.setIdPaciente(manejo.paciente.getId());
             semen.setVolumen(Double.parseDouble(volumen.getText()));
             semen.setConcentracion(Double.parseDouble(concentracion.getText()));
             semen.setGlobulosBlancos(Double.parseDouble(globulosBlancos.getText()));

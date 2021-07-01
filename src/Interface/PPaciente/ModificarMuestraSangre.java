@@ -14,7 +14,7 @@ public class ModificarMuestraSangre extends javax.swing.JPanel {
         initComponents();
         manejo.setSize(346, 395);
         manejo.setLocationRelativeTo(null);
-        this.sangre = new JdbcSangre().select(manejo.paciente.getIdPaciente());
+        this.sangre = new JdbcSangre().select(manejo.paciente.getId());
     }
 
     @SuppressWarnings("unchecked")

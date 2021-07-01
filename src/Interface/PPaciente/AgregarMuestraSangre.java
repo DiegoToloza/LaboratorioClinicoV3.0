@@ -139,7 +139,7 @@ public class AgregarMuestraSangre extends javax.swing.JPanel {
     private void botonAgregarPacienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAgregarPacienteActionPerformed
         try {
             domain.Sangre sangre = new domain.Sangre();
-            sangre.setIdPaciente(manejo.paciente.getIdPaciente());
+            sangre.setIdPaciente(manejo.paciente.getId());
             sangre.setHemogoblina(Double.parseDouble(hemoglobina.getText()));
             sangre.setReticulocitos(Double.parseDouble(reticulocitos.getText()));
             sangre.setNeutrofilos(Integer.parseInt(neutrofilos.getText()));

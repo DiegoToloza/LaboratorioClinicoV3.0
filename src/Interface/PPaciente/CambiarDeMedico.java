@@ -117,7 +117,7 @@ public class CambiarDeMedico extends javax.swing.JPanel {
         try {
             List<Persona> listaMedicos = new JdbcMedico().select();
             int opcion = comboBoxMedicos.getSelectedIndex();
-            manejo.paciente.setIdMedico(((domain.Medico)listaMedicos.get(opcion)).getIdMedico());
+            manejo.paciente.setIdMedico(((domain.Medico)listaMedicos.get(opcion)).getId());
             JdbcPaciente SQLPaciente = new JdbcPaciente();
             SQLPaciente.update(manejo.paciente);
             manejo.setVisible(false);

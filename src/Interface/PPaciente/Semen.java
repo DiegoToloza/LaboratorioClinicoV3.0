@@ -11,7 +11,7 @@ public class Semen extends javax.swing.JPanel {
         this.sp = se;
         initComponents();
         JdbcSemen jse = new JdbcSemen();
-        domain.Semen sem = jse.select(se.paciente.getIdPaciente());
+        domain.Semen sem = jse.select(se.paciente.getId());
         if (sem != null) {
             textVolumen.setText("" + sem.getVolumen());
             textConcentracion.setText("" + sem.getConcentracion());
@@ -287,7 +287,7 @@ public class Semen extends javax.swing.JPanel {
 
     private void botonEliminarMuestraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEliminarMuestraActionPerformed
         try {
-            domain.Semen semen = new JdbcSemen().select(sp.paciente.getIdPaciente());
+            domain.Semen semen = new JdbcSemen().select(sp.paciente.getId());
             new JdbcSemen().delete(semen);
             Semen semencito = new Semen(sp);
             sp.cargarPanel(semencito);

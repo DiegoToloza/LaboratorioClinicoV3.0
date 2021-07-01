@@ -1,5 +1,7 @@
 package domain;
 
+import excepciones.PorRangoException;
+
 public class Semen implements IMuestraGenerica {
     private double volumen;
     private double concentracion;
@@ -13,9 +15,9 @@ public class Semen implements IMuestraGenerica {
 
     public Semen(double volumen, double concentracion, double globulosBlancos, int vitalidad, int idPaciente) {
         this.volumen = volumen;
-        this.concentracion = concentracion;
-        this.globulosBlancos = globulosBlancos;
-        this.vitalidad = vitalidad;
+        setConcentracion(concentracion);
+        setGlobulosBlancos(globulosBlancos);
+        setVitalidad(vitalidad);
         this.idPaciente = idPaciente;
     }
 
@@ -24,6 +26,9 @@ public class Semen implements IMuestraGenerica {
     }
 
     public void setVolumen(double volumen) {
+        if(volumen < 0){
+            throw new PorRangoException();
+        }
         this.volumen = volumen;
     }
 
@@ -32,6 +37,9 @@ public class Semen implements IMuestraGenerica {
     }
 
     public void setConcentracion(double concentracion) {
+        if(concentracion < 0){
+            throw new PorRangoException();
+        }
         this.concentracion = concentracion;
     }
 
@@ -40,6 +48,9 @@ public class Semen implements IMuestraGenerica {
     }
 
     public void setGlobulosBlancos(double globulosBlancos) {
+        if(globulosBlancos < 0){
+            throw new PorRangoException();
+        }
         this.globulosBlancos = globulosBlancos;
     }
 
@@ -48,6 +59,9 @@ public class Semen implements IMuestraGenerica {
     }
 
     public void setVitalidad(int vitalidad) {
+        if(vitalidad < 0 || vitalidad > 100){
+            throw new PorRangoException();
+        }
         this.vitalidad = vitalidad;
     }
     

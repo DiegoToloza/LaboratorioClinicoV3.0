@@ -64,7 +64,7 @@ public class JdbcPaciente {
             ps.setString(5, paciente.getTelefono());
             ps.setString(6, paciente.getCorreoElectronico());
             ps.setInt(7, paciente.getIdMedico());
-            ps.setInt(8, paciente.getIdPaciente());
+            ps.setInt(8, paciente.getId());
             ps.executeUpdate();
         } finally {
             Conexion.close(ps);
@@ -82,7 +82,7 @@ public class JdbcPaciente {
         try {
             conn = this.userConn != null ? this.userConn : Conexion.getConnection();
             ps = conn.prepareStatement(SQL_DELETE);
-            ps.setInt(1, paciente.getIdPaciente());
+            ps.setInt(1, paciente.getId());
             ps.executeUpdate();
         } finally {
             Conexion.close(ps);
@@ -153,7 +153,7 @@ public class JdbcPaciente {
                 int idMedico = rs.getInt("id_medico");
 
                 Paciente paciente = new Paciente(idPaciente, telefono, email, nombre, edad, genero, nacionalidad, idMedico);
-                mapaPacientes.put(paciente.getIdPaciente(),paciente);
+                mapaPacientes.put(paciente.getId(),paciente);
             }
         } finally {
             Conexion.close(rs);

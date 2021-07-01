@@ -5,15 +5,28 @@ public abstract class Persona {
     protected int edad;
     protected String genero;
     protected String nacionalidad;
+    private int id;
     
     public Persona(){
     }
     
+    public Persona(String nombre, int edad, String genero, String nacionalidad, int id){
+        setNombre(nombre);
+        setEdad(edad);
+        setGenero(genero);
+        setNacionalidad(nacionalidad);
+        this.id = id;
+    }
+    
     public Persona(String nombre, int edad, String genero, String nacionalidad){
-        this.nombre = nombre;
-        this.edad = edad;
-        this.genero = genero;
-        this.nacionalidad = nacionalidad;
+        setNombre(nombre);
+        setEdad(edad);
+        setGenero(genero);
+        setNacionalidad(nacionalidad);
+    }
+    
+    public Persona(int id){
+        this.id = id;
     }
 
     public abstract String getNombre();
@@ -31,6 +44,14 @@ public abstract class Persona {
     public abstract String getNacionalidad();
 
     public abstract void setNacionalidad(String nacionalidad);
+    
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     @Override
     public String toString() {

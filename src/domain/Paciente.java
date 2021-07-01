@@ -1,48 +1,38 @@
 package domain;
 
-import java.util.ArrayList;
-import java.util.List;
+import excepciones.*;
+
 
 public class Paciente extends Persona {
 
-    private int idPaciente;
     private String telefono;
     private String correoElectronico;
     private int idMedico;
-    private List<IMuestraGenerica> muestras;
+    private ColeccionMuestras muestras;
 
     public Paciente() {
-        this.muestras = new ArrayList<>();
+        this.muestras = new ColeccionMuestras();
     }
 
     public Paciente(int idPaciente) {
-        this.idPaciente = idPaciente;
-        this.muestras = new ArrayList<>();
+        super(idPaciente);
+        this.muestras = new ColeccionMuestras();
     }
 
     public Paciente(String telefono, String correoElectronico, String nombre, int edad, String genero, String nacionalidad, int idMedico) {
         super(nombre, edad, genero, nacionalidad);
-        this.telefono = telefono;
-        this.correoElectronico = correoElectronico;
+        setTelefono(telefono);
+        setCorreoElectronico(correoElectronico);
         this.idMedico = idMedico;
-        this.muestras = new ArrayList<>();
+        this.muestras = new ColeccionMuestras();
     }
 
     public Paciente(int idPaciente, String telefono, String correoElectronico, String nombre, int edad, String genero, String nacionalidad, int idMedico) {
-        super(nombre, edad, genero, nacionalidad);
-        this.idPaciente = idPaciente;
-        this.telefono = telefono;
-        this.correoElectronico = correoElectronico;
+        super(nombre, edad, genero, nacionalidad, idPaciente);
+        setTelefono(telefono);
+        setCorreoElectronico(correoElectronico);
         this.idMedico = idMedico;
-        this.muestras = new ArrayList<>();
-    }
-
-    public int getIdPaciente() {
-        return this.idPaciente;
-    }
-
-    public void setIdPaciente(int idPaciente) {
-        this.idPaciente = idPaciente;
+        this.muestras = new ColeccionMuestras();
     }
 
     public String getTelefono() {
@@ -50,6 +40,9 @@ public class Paciente extends Persona {
     }
 
     public void setTelefono(String telefono) {
+        if(telefono.length() != 8){
+            throw new PorTamanioException("8");
+        }
         this.telefono = telefono;
     }
 
@@ -58,11 +51,16 @@ public class Paciente extends Persona {
     }
 
     public void setCorreoElectronico(String correoElectronico) {
+        if(correoElectronico.isEmpty()){
+            throw new TextoBlancoException();
+        } 
+        else if(correoElectronico.length() > 40){
+            throw new PorTamanioException("40");
+        } 
+        else if(!correoElectronico.contains("@")){
+            throw new CorreoException();
+        }
         this.correoElectronico = correoElectronico;
-    }
-
-    public void setMuestras(List<IMuestraGenerica> muestras) {
-        this.muestras = muestras;
     }
 
     public int getIdMedico() {
@@ -73,14 +71,9 @@ public class Paciente extends Persona {
         this.idMedico = idMedico;
     }
 
-    public List<IMuestraGenerica> getMuestras() {
-        return this.muestras;
-    }
-
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("Paciente{idPaciente = ").append(idPaciente);
         sb.append(", telefono = ").append(telefono);
         sb.append(", correoElectronico = ").append(correoElectronico);
         sb.append(super.toString());
@@ -95,6 +88,12 @@ public class Paciente extends Persona {
 
     @Override
     public void setNombre(String nombre) {
+        if(nombre.isEmpty()){
+            throw new TextoBlancoException();
+        }
+        else if(nombre.length() > 40){
+            throw new PorTamanioException("40");
+        }
         this.nombre = nombre;
     }
 
@@ -105,6 +104,9 @@ public class Paciente extends Persona {
 
     @Override
     public void setEdad(int edad) {
+        if (edad < 0 || edad > 123) {
+            throw new PorRangoException();
+        }
         this.edad = edad;
     }
 
@@ -125,6 +127,28 @@ public class Paciente extends Persona {
 
     @Override
     public void setNacionalidad(String nacionalidad) {
+        if(nacionalidad.isEmpty()){
+            throw new TextoBlancoException();
+        }
+        else if(nacionalidad.length() > 15){
+            throw new PorTamanioException("15");
+        }
         this.nacionalidad = nacionalidad;
+    }
+    
+    public IMuestraGenerica obtenerMuestra(int tipoMuestra) {
+        return muestras.obtenerMuestra(tipoMuestra);
+    }
+    
+    public void agregarMuestra(IMuestraGenerica muestra, int tipoMuestra ) {
+        muestras.agregar(muestra, tipoMuestra);
+    }
+    
+    public void eliminarMuestra(int tipoMuestra) {
+        muestras.eliminar(tipoMuestra);
+    }
+    
+    public void modificarMuestra(IMuestraGenerica muestra, int tipoMuestra) {
+        muestras.modificar(muestra, tipoMuestra);
     }
 }

@@ -11,7 +11,7 @@ public class Sangre extends javax.swing.JPanel {
         this.sp = sa;
         initComponents();
         JdbcSangre jsa = new JdbcSangre();
-        domain.Sangre san = jsa.select(sa.paciente.getIdPaciente());
+        domain.Sangre san = jsa.select(sa.paciente.getId());
         if (san != null) {
             textHemoglobina.setText("" + san.getHemogoblina());
             textReticulocitos.setText("" + san.getReticulocitos());
@@ -281,7 +281,7 @@ public class Sangre extends javax.swing.JPanel {
 
     private void botonEliminarMuestraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEliminarMuestraActionPerformed
         try {
-            domain.Sangre sangre = new JdbcSangre().select(sp.paciente.getIdPaciente());
+            domain.Sangre sangre = new JdbcSangre().select(sp.paciente.getId());
             new JdbcSangre().delete(sangre);
             Sangre sangrecita = new Sangre(sp);
             sp.cargarPanel(sangrecita);

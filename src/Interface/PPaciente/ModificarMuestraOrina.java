@@ -15,7 +15,7 @@ public class ModificarMuestraOrina extends javax.swing.JPanel {
         manejo.setSize(325, 395);
         manejo.setLocationRelativeTo(null);
         try {
-            this.orina = new JdbcOrina().select(manejo.paciente.getIdPaciente());
+            this.orina = new JdbcOrina().select(manejo.paciente.getId());
         } catch (SQLException ex) {
             ex.printStackTrace(System.out);
         }

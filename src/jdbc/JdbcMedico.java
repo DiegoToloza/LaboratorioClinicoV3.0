@@ -63,7 +63,7 @@ public class JdbcMedico {
             ps.setString(5, medico.getEspecializacion());
             ps.setString(6, medico.getTelefono());
             ps.setString(7, medico.getCorreoElectronico());
-            ps.setInt(8, medico.getIdMedico());
+            ps.setInt(8, medico.getId());
             ps.executeUpdate();
         } finally {
             Conexion.close(ps);
@@ -81,7 +81,7 @@ public class JdbcMedico {
         try {
             conn = this.userConn != null ? this.userConn : Conexion.getConnection();
             ps = conn.prepareStatement(SQL_DELETE);
-            ps.setInt(1, medico.getIdMedico());
+            ps.setInt(1, medico.getId());
             ps.executeUpdate();
         } finally {
             Conexion.close(ps);
